@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <h1>conditional rendering & list</h1>
+    <section id="app">
+      <input type="text" v-model="courseContent" />
+      <button @click="addCourse">add a course</button>
+      <p v-if="courses.length===0">No course</p>
+      <ul v-else>
+        <!-- <li v-for="(c,i) in courses">[{{i}}]{{c}}</li> -->
+        <!-- <li v-for="(c,i) in courses" @click="removeCourse(i)">[{{i}}]{{c}}</li> -->
+        <!-- 未加入key的情境 -->
+        <!-- <li v-for="(c,i) in courses" @click="removeCourse(i)">
+          [{{i}}]{{c}}<input type="text" @click.stop />
+        </li> -->
+        <!-- 加入key去識別資料 -->
+        <li v-for="(c,i) in courses" @click="removeCourse(i)" :key="c">
+          [{{i}}]{{c}}<input type="text" @click.stop />
+        </li>
+      </ul>
+      <br />
+      <ul>
+        <li v-for="value in poop">value={{value}}</li>
+      </ul>
+      <br />
+      <ul>
+        <li v-for="(value,key) in poop">[{{key}}]={{value}}</li>
+      </ul>
+      <br />
+      <ul>
+        <li v-for="(value,key,index) in poop">
+          ({{index}})[{{key}}]={{value}}
+        </li>
+      </ul>
+      <br />
+    </section>
+  </body>
+</html>

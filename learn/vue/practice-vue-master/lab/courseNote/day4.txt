@@ -1,0 +1,1081 @@
+1. update yout vs code if not yet
+
+2. checkin code to explain_props
+
+3. git checkout master or use GUI
+
+git branch
+(make sure you are in master)
+git merge explain_props
+
+npm run serve
+~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <li>
+    <h2>{{ id }}-{{ current }}</h2>
+    <button @click="toggleCourseDetail">Show detail</button>
+
+    <ul v-if="detailsVisible">
+      <li>{{ name }}</li>
+      <li>{{ duration }}</li>
+    </ul>
+  </li>
+</template>
+<script>
+export default {
+  props: ["id", "name", "duration", "current"],
+  data() {
+    return {
+      detailsVisible: true,
+      isCurrent: this.current,
+    };
+  },
+  methods: {
+    toggleCourseDetail() {
+      this.detailsVisible = !this.detailsVisible;
+    },
+    toggleCurrent(){
+      this.isCurrent = !this.isCurrent;
+      //this.current = !this.current;
+    }
+  },
+};
+</script>
+
+
+~~~~~~~~~~~~~~~~~~
+  <li>
+    <h2>{{ id }}-{{ isCurrent }}</h2>
+    <button @click="toggleCourseDetail">Show detail</button>
+    <button @click="toggleCurrent">toggle current class</button>
+    <ul v-if="detailsVisible">
+      <li>{{ name }}</li>
+      <li>{{ duration }}</li>
+    </ul>
+  </li>
+~~~~~~~~~~~~~~~~~~~~
+props: { id: String, name: String, duration: Number, current: Boolean },
+
+
+props: {
+    id: { type: String, requred: true },
+    name: { type: String, requred: true },
+    duration: {
+      type: String,
+      requred: true,
+      validator: function (value) {
+        return parseInt(value) > 7;
+      },
+    },
+    current: { type: String, requred: false, default: "false" },
+  },
+~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <course-intro
+    id="poop"
+    name="python oop"
+    :duration="35"
+    :current="true"
+  ></course-intro>
+  <course-intro
+    id="bdpy"
+    name="python and big data"
+    :duration="35"
+    :current="false"
+  ></course-intro>
+</template>
+
+===============explain==================
+export default {
+  name: "App",
+  components: {
+    HelloWorld,
+  },
+  data() {
+    return { course_name1: "POOP", course_name2: "BDPY" };
+  },
+};
+
+
+<template>
+  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <course-intro
+    :id="course_name1"
+    name="python oop"
+    :duration="35"
+    :current="true"
+  ></course-intro>
+  <course-intro
+    :id="course_name2"
+    name="python and big data"
+    :duration="35"
+    :current="false"
+  ></course-intro>
+</template>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+  props: {
+    id: { type: String, requred: true },
+    name: { type: String, requred: true },
+    duration: {
+      type: Number,
+      requred: true,
+      validator: function (value) {
+        return value > 7;
+      },
+    },
+    current: { type: Boolean, requred: false },
+  },
+~~~~~~~~~~~~~~~~~~~~~~~~~
+  props: {
+    id: { type: String, required: true },
+    name: { type: String, required: true },
+    duration: {
+      type: Number,
+      required: true,
+      validator: function (value) {
+        return value > 7;
+      },
+    },
+    current: { type: Boolean, required: false },
+  },
+
+requred ==> requ[i]red
+
+<course-intro
+    :id="course_name1"
+    name="python oop"
+    :current="true"
+  ></course-intro> <-- missing duration
+~~~~~~~~~~~~~~~~~~~~~~~
+App.vue
+
+<script>
+export default {
+  name: "App",
+
+  data() {
+    return {
+      courses: [
+        { id: "poop", name: "python oop", duration: 35, current: true },
+        { id: "bdpy", name: "python and big data", duration: 35, current: false },
+      ],
+    };
+  },
+};
+</script>
+
+<template>
+  <course-intro
+    v-for="course in courses"
+    :key="course.id"
+    :id="course.id"
+    :name="course.name"
+    :duration="course.duration"
+    :current="course.current"
+  ></course-intro>
+</template>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://app.bugsnag.com/
+
+
+<template>
+  <li>
+    <h2>props current==>{{current}}</h2>
+    <h2>{{ id }}-{{ isCurrent }}</h2>
+    <button @click="toggleCourseDetail">Show detail</button>
+    <button @click="toggleCurrent">toggle current class</button>
+    <ul v-if="detailsVisible">
+      <li>{{ name }}</li>
+      <li>{{ duration }}</li>
+    </ul>
+  </li>
+</template>
+
+   toggleCurrent() {
+      this.isCurrent = !this.isCurrent;
+      //this.current = !this.current;
+      this.$emit('toggle-current', this.id);
+    },
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+export default {
+  name: "App",
+  methods: {
+    toggleCurrentState(id) {
+      console.log(`should change id:${id}`);
+    },
+  },
+  data() {
+    return {
+      courses: [
+        { id: "poop", name: "python oop", duration: 35, current: true },
+        {
+          id: "bdpy",
+          name: "python and big data",
+          duration: 35,
+          current: false,
+        },
+      ],
+    };
+  },
+};
+
+
+
+    toggleCurrentState(id) {
+      console.log(`should change id:${id}`);
+      const course = this.courses.find((course) => course.id === id);
+      course.current = ! course.current;
+    },
+
+~~~~~~~~~~~~~~~~~~~~~~
+  <course-intro
+    v-for="course in courses"
+    :key="course.id"
+    :id="course.id"
+    :name="course.name"
+    :duration="course.duration"
+    :current="course.current"
+    @toggle-current="toggleCurrentState"
+  ></course-intro>
+
+----------------------
+
+git checkout mitt_event
+make sure $emit is NOT in your project
+
+stop npm run serve
+npm install mitt
+npm run serve
+
+main.js
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import CourseIntro from "./components/CourseIntro.vue"
+import mitt from "mitt"
+const emitter = mitt()
+const app = createApp(App)
+app.component("course-intro", CourseIntro)
+app.config.globalProperties.emitter = emitter;
+app.mount('#app')
+
+
+App.vue
+export default {
+  name: "App",
+  components: {
+    HelloWorld,
+  },
+  created(){
+    console.log("component created")
+    this.emitter.on('toggle-current',(idx)=>{
+      console.log(`${idx} should change toggle state`)
+    })
+  },
+  data() {
+    return { course_name1: "POOP", course_name2: "BDPY" };
+  },
+};
+
+CourseIntro.vue
+
+    toggleCurrent() {
+      this.isCurrent = !this.isCurrent;
+      //this.current = !this.current;
+      this.emitter.emit('toggle-current',this.id)
+    },
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <course-intro
+    v-for="course in courses"
+    :key="course.id"
+    :id="course.id"
+    :name="course.name"
+    :duration="course.duration"
+    :current="course.current"
+    @toggle-current="toggleCurrentState"
+  ></course-intro>
+</template>
+
+<script>
+
+
+export default {
+  name: "App",
+
+  created() {
+    console.log("component created");
+    this.emitter.on("toggle-current", (idx) => {
+      console.log(`${idx} should change toggle state`);
+      const course = this.courses.find((c) => c.id == idx);
+      course.current = !course.current;
+    });
+  },
+  data() {
+    return {
+      courses: [
+        { id: "poop", name: "python oop", duration: 35, current: true },
+        {
+          id: "bdpy",
+          name: "python and big data",
+          duration: 35,
+          current: false,
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+#app ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#app li {
+  box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+  margin: 1rem auto;
+  border-radius: 5px;
+  text-align: center;
+  width: 50%;
+  max-width: 40rem;
+}
+#app button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px sold #ff0077;
+  background-color: #c0ffee;
+  color: black;
+}
+</style>
+~~~~~~~~~~~~~~~~~
+  <course-intro
+    v-for="course in courses"
+    :key="course.id"
+    :id="course.id"
+    :name="course.name"
+    :duration="course.duration"
+    :current="course.current"
+    
+  ></course-intro>
+
+
+https://vuejs.org/api/options-lifecycle.html
+------------------------------------------------------
+<h2>props-->{{current}}</h2>
+
+
+git checkout master
+
+
+export default {
+  // props: ["id", "name", "duration", "current"],
+  // props: { id: String, name: String, duration: Number, current: Boolean },
+  emits:['toggle-current'],
+  props: {
+    id: { type: String, required: true },
+    name: { type: String, required: true },
+    duration: {
+      type: Number,
+      required: true,
+      validator: function (value) {
+        return value > 7;
+      },
+    },
+    current: { type: Boolean, required: false },
+  },
+  data() {
+    return {
+      detailsVisible: true,
+      isCurrent: this.current,
+    };
+  },
+  methods: {
+    toggleCourseDetail() {
+      this.detailsVisible = !this.detailsVisible;
+    },
+    toggleCurrent() {
+      this.isCurrent = !this.isCurrent;
+      //this.current = !this.current;
+      this.$emit('toggle-current', this.id);
+    },
+  },
+};
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  emits: {
+    "toggle-current": function (id) {
+      if (id) {
+        return true;
+      } else {
+        console.warn("oops, id is missing");
+        return false;
+      }
+    },
+  },
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    toggleCurrent() {
+      this.isCurrent = !this.isCurrent;
+      //this.current = !this.current;
+      // this.$emit("toggle-current", this.id);
+      this.$emit("toggle-current");
+    }, 	
+
+
+NewCourse.vue
+
+<template>
+  <form>
+    <div><label>id</label><input type="text" /></div>
+    <div><label>name</label><input type="text" /></div>
+    <div><label>duration</label><input type="text" /></div>
+    <button>Add a course</button>
+  </form>
+</template>
+<script>
+export default {};
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~
+main.js
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import CourseIntro from "./components/CourseIntro.vue"
+import NewCourse from "./components/NewCourse.vue"
+const app = createApp(App)
+app.component("course-intro", CourseIntro)
+app.component("new-course",NewCourse)
+app.mount('#app')
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+<new-course></new-course>
+  <course-intro
+    v-for="course in courses"
+    :key="course.id"
+    :id="course.id"
+    :name="course.name"
+    :duration="course.duration"
+    :current="course.current"
+    @toggle-current="toggleCurrentState"
+  ></course-intro>
+</template>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#app li,
+#app form {
+  box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+  margin: 1rem auto;
+  border-radius: 5px;
+  text-align: center;
+  width: 50%;
+  max-width: 40rem;
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <form>
+    <div><label>id</label><input type="text" v-model="inputId" /></div>
+    <div><label>name</label><input type="text" v-model="inputName" /></div>
+    <div>
+      <label>duration</label><input type="text" v-model="inputDuration" />
+    </div>
+    <button>Add a course</button>
+  </form>
+</template>
+<script>
+export default {
+  emits: ["add-course"],
+  data() {
+    return { inputId: "", inputName: "", inputDuration: "" };
+  },
+  methods: {
+    submitData() {
+      this.$emit(
+        "add-course",
+        this.inputId,
+        this.inputName,
+        this.inputDuration
+      );
+    },
+  },
+};
+</script>
+~~~~~~~~~~~~~~~~~~
+<template>
+  <form @submit.prevent="submitData">
+    <div><label>id</label><input type="text" v-model="inputId" /></div>
+    <div><label>name</label><input type="text" v-model="inputName" /></div>
+    <div>
+      <label>duration</label><input type="text" v-model="inputDuration" />
+    </div>
+    <button>Add a course</button>
+  </form>
+</template>
+~~~~~~~~~~~~~~~~~~~~~
+App.vue
+
+export default {
+  name: "App",
+  methods: {
+    toggleCurrentState(id) {
+      console.log(`should change id:${id}`);
+      const course = this.courses.find((course) => course.id === id);
+      course.current = !course.current;
+    },
+    addCourse(id, name, duration){
+      const newCourse = {id:id, name:name, duration:duration,current:false}
+      this.courses.push(newCourse)
+    }
+  },
+  data() {
+    return {
+      courses: [
+        { id: "poop", name: "python oop", duration: 35, current: true },
+        {
+          id: "bdpy",
+          name: "python and big data",
+          duration: 35,
+          current: false,
+        },
+      ],
+    };
+  },
+};
+
+
+<new-course @add-course="addCourse"></new-course>
+
+const newCourse = {id:id, name:name, duration:parseInt(duration),current:false}
+
+
+<label>duration</label><input type="number" v-model="inputDuration" />
+
+commit code so far...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CourseIntro.vue
+
+    <button @click="deleteCourse">Delete</button>
+
+  methods: {
+    toggleCourseDetail() {
+      this.detailsVisible = !this.detailsVisible;
+    },
+    toggleCurrent() {
+      this.isCurrent = !this.isCurrent;
+      //this.current = !this.current;
+      this.$emit("toggle-current", this.id);
+      // this.$emit("toggle-current");
+    },
+    deleteCourse() {
+      this.$emit("delete-current",this.id)
+    }
+  },
+
+
+  emits: {
+    "toggle-current": function (id) {
+      if (id) {
+        return true;
+      } else {
+        console.warn("oops, id is missing");
+        return false;
+      }
+    },
+    "delete-current": function (id) {
+      if (id) {
+        return true;
+      } else {
+        console.warn("oops, id is missing");
+        return false;
+      }
+    },
+  },
+~~~~~~~~~~~~~~~~~~~~~~~~
+  <course-intro
+    v-for="course in courses"
+    :key="course.id"
+    :id="course.id"
+    :name="course.name"
+    :duration="course.duration"
+    :current="course.current"
+    @toggle-current="toggleCurrentState"
+    @delete-current="delCourse"
+  ></course-intro>
+
+  methods: {
+    toggleCurrentState(id) {
+      console.log(`should change id:${id}`);
+      const course = this.courses.find((course) => course.id === id);
+      course.current = !course.current;
+    },
+    addCourse(id, name, duration){
+      const newCourse = {id:id, name:name, duration:duration,current:false}
+      this.courses.push(newCourse)
+    },
+    delCourse(id){
+      this.courses.filter((course)=>course.id !== id)
+    }
+  },
+
+
+delCourse(id){
+      console.log("delete with id=",id)
+      this.courses = this.courses.filter((course)=>course.id !== id)
+    }
+
+
+vue create vue11_bugsnag_vue3
+Default VUE3 babel
+cd vue11_bugsnag_vue3
+
+
+npm install @bugsnag/js @bugsnag/plugin-vue
+
+code .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import { createApp } from 'vue'
+import App from './App.vue'
+import Bugsnag from '@bugsnag/js'
+import BugsnagPluginVue from "@bugsnag/plugin-vue"
+Bugsnag.start({
+    apiKey: '',
+    plugins: [new BugsnagPluginVue()]
+})
+const bugsnagVue = Bugsnag.getPlugin('vue')
+createApp(App).
+    use(bugsnagVue).
+    mount('#app')
+
+
+
+<button v-on:click="recordBug">trigger a bug</button>
+
+
+    recordBug(){
+      console.log("oops, something wrong happen")
+      Bugsnag.notify(new Error("something bad happen in Helloworld.vue...."))
+    }
+
+
+vue create vue12_composition_vue3
+Default (vue3)
+
+cd vue12_composition_vue3
+
+code .
+
+~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <section>
+    <h3>{{userName}}</h3>
+  </section>
+  
+</template>
+
+<script>
+
+
+export default {
+  name: 'App',
+  data(){ return{userName:"Mark Ho"}}
+}
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<script>
+import {ref} from "vue";
+export default {
+  name: "App",
+  //data(){ return{userName:"Mark Ho"}}
+  setup() {
+    const userNameRef = ref("Mark Ho")
+    return{userName:userNameRef}
+  },
+};
+</script>
+
+<script>
+import { ref } from "vue";
+export default {
+  name: "App",
+  //data(){ return{userName:"Mark Ho"}}
+  setup() {
+    const userNameRef = ref("Mark Ho");
+    setTimeout(function () {
+      userNameRef.value = "Meng-Hang Ho"
+    }, 5000);
+    return { userName: userNameRef };
+  },
+};
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <section>
+    <h3>{{ userName }}</h3>
+    <h4>{{ age }}</h4>
+  </section>
+</template>
+
+<script>
+import { ref } from "vue";
+export default {
+  name: "App",
+  //data(){ return{userName:"Mark Ho"}}
+  setup() {
+    const userNameRef = ref("Mark Ho");
+    const ageRef = ref(45);
+    setTimeout(function () {
+      userNameRef.value = "Meng-Hang Ho";
+      ageRef.value += 1;
+    }, 5000);
+    return { userName: userNameRef, age: ageRef };
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <section>
+    <h3>{{ userName }}</h3>
+    <h4>{{ age }}</h4>
+    <br />
+    <h1>{{ user }}</h1>
+    <h3>{{user2Name}}</h3>
+    <h4>{{user2Age}}</h4>
+  </section>
+</template>
+
+<script>
+import { ref } from "vue";
+export default {
+  name: "App",
+  //data(){ return{userName:"Mark Ho"}}
+  setup() {
+    const userNameRef = ref("Mark Ho");
+    const ageRef = ref(45);
+    const userRef = ref({ userName: "James Liu", age: 36 });
+    setTimeout(function () {
+      userNameRef.value = "Meng-Hang Ho";
+      ageRef.value += 1;
+      userRef.value.userName = "Po-Wei Liu"
+      userRef.value.age += 1;
+    }, 5000);
+    return { userName: userNameRef, age: ageRef, user: userRef,
+    user2Name:userRef.value.userName, user2Age:userRef.value.age };
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <section>
+    <h3>{{ userName }}</h3>
+    <h4>{{ age }}</h4>
+    <br />
+    <h1>{{ user }}</h1>
+    <h3>{{ user2Name }}</h3>
+    <h4>{{ user2Age }}</h4>
+    <br />
+    <h1>{{ user3 }}</h1>
+    <h3>{{user3Name}}</h3>
+    <h4>{{user3Age}}</h4>
+  </section>
+</template>
+
+<script>
+import { ref, reactive } from "vue";
+export default {
+  name: "App",
+  //data(){ return{userName:"Mark Ho"}}
+  setup() {
+    const userNameRef = ref("Mark Ho");
+    const ageRef = ref(45);
+    const userRef = ref({ userName: "James Liu", age: 36 });
+    const user3 = reactive({ userName: "Sean Chou", age: 32 });
+    setTimeout(function () {
+      userNameRef.value = "Meng-Hang Ho";
+      ageRef.value += 1;
+      userRef.value.userName = "Po-Wei Liu";
+      userRef.value.age += 1;
+      user3.userName = "Shu-Yang Chou";
+      user3.age += 2;
+    }, 5000);
+
+    return {
+      userName: userNameRef,
+      age: ageRef,
+      user: userRef,
+      user2Name: userRef.value.userName,
+      user2Age: userRef.value.age,
+      user3: user3,
+      user3Name: user3.userName,
+      user3Age: user3.age,
+    };
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+~~~~~~~~~~~~~~~~~~~~~
+  setup() {
+    const userNameRef = ref("Mark Ho");
+    const ageRef = ref(45);
+    const userRef = ref({ userName: "James Liu", age: 36 });
+    const user3 = reactive({ userName: "Sean Chou", age: 32 });
+    console.log(`ageRef=${ageRef.value}, user3 reactive=${user3}`)
+    console.log(`ageRef is ref?${isRef(ageRef)}, is reactive?${isReactive(ageRef)}`)
+    console.log(`user3 is ref?${isRef(user3)}, is reactive?${isReactive(user3)}`)
+    setTimeout(function () {
+      userNameRef.value = "Meng-Hang Ho";
+      ageRef.value += 1;
+      userRef.value.userName = "Po-Wei Liu";
+      userRef.value.age += 1;
+      user3.userName = "Shu-Yang Chou";
+      user3.age += 2;
+    }, 5000);
+
+    return {
+      userName: userNameRef,
+      age: ageRef,
+      user: userRef,
+      user2Name: userRef.value.userName,
+      user2Age: userRef.value.age,
+      user3: user3,
+      user3Name: user3.userName,
+      user3Age: user3.age,
+    };
+  },
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <section>
+    <h3>{{ userName }}</h3>
+    <h4>{{ age }}</h4>
+    <br />
+    <h1>{{ user }}</h1>
+    <h3>{{ user2Name }}</h3>
+    <h4>{{ user2Age }}</h4>
+    <br />
+    <h1>{{ user3 }}</h1>
+    <h3>{{user3Name}}</h3>
+    <h4>{{user3Age}}</h4>
+    <br/>
+    <h1>{{course}}</h1>
+  </section>
+</template>
+
+<script>
+import { ref, reactive,isReactive,isRef, toRefs } from "vue";
+export default {
+  name: "App",
+  //data(){ return{userName:"Mark Ho"}}
+  setup() {
+    const userNameRef = ref("Mark Ho");
+    const ageRef = ref(45);
+    const userRef = ref({ userName: "James Liu", age: 36 });
+    const user3 = reactive({ userName: "Sean Chou", age: 32 });
+    console.log(`ageRef=${ageRef.value}, user3 reactive=${user3}`)
+    console.log(`ageRef is ref?${isRef(ageRef)}, is reactive?${isReactive(ageRef)}`)
+    console.log(`user3 is ref?${isRef(user3)}, is reactive?${isReactive(user3)}`)
+    const courseRef = toRefs({courseName:"poop", duration:35})
+    console.log(`courseRef is ref?${isRef(courseRef)}, courseRef.duration is ref?${isRef(courseRef.duration)}`)
+    setTimeout(function () {
+      userNameRef.value = "Meng-Hang Ho";
+      ageRef.value += 1;
+      userRef.value.userName = "Po-Wei Liu";
+      userRef.value.age += 1;
+      user3.userName = "Shu-Yang Chou";
+      user3.age += 2;
+      courseRef.courseName="python and object oriented"
+      courseRef.duration=70
+    }, 5000);
+
+    return {
+      userName: userNameRef,
+      age: ageRef,
+      user: userRef,
+      user2Name: userRef.value.userName,
+      user2Age: userRef.value.age,
+      user3: user3,
+      user3Name: user3.userName,
+      user3Age: user3.age,
+      course:courseRef
+    };
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+
+
+vue create vue13_composition2_vue3
+cd vue13_composition2_vue3
+code .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <section id="lab13">
+    <h3>{{course}}</h3>
+  </section>
+</template>
+
+<script>
+import { reactive } from "vue";
+export default {
+  name: "App",
+
+  setup() {
+    const course = reactive({ name: "POOP", duration: 35 });
+
+    return({course:course})
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <section id="lab13">
+    <h3>{{course}}</h3>
+    <button @click="course.duration+=7">bad way</button>
+  </section>
+</template>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<template>
+  <section id="lab13">
+    <h3>{{ course }}</h3>
+    <h3>{{ price }}</h3>
+    <button @click="extraDuration">bad way</button>
+  </section>
+</template>
+
+<script>
+import { reactive, ref } from "vue";
+export default {
+  name: "App",
+
+  setup() {
+    const course = reactive({ name: "POOP", duration: 35 });
+    const price = ref(24000);
+    function extraDuration() {
+      course.duration += 7;
+      price.value += 2000;
+    }
+    return { course, extraDuration, price };
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+
+<template>
+  <section id="lab13">
+    <h3>{{ course }}</h3>
+    <h3>{{ price }}</h3>
+    <button @click="extraDuration">bad way</button>
+    <h2>{{courseDisplayName}}</h2>
+  </section>
+</template>
+
+<script>
+import { reactive, ref, computed } from "vue";
+export default {
+  name: "App",
+
+  setup() {
+    const course = reactive({ name: "POOP", duration: 35 });
+    const price = ref(24000);
+    const courseId = "hello"
+    const courseFullName = "vue"
+    const courseDisplayName = computed(function(){
+      return courseId + ' ' + courseFullName;
+    })
+    function extraDuration() {
+      course.duration += 7;
+      price.value += 2000;
+    }
+    return { course, extraDuration, price,courseDisplayName };
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

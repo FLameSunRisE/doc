@@ -1,0 +1,348 @@
+﻿https://nodejs.org/en/about/releases/
+
+https://node.green/
+
+set path
+
+Path=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;
+
+install node.JS by default
+
+C:\Program Files\nodejs\ ==> node.JS path
+
+close cmd, reopen cmd
+node --version
+npm --version
+
+
+npm config list
+
+set path
+
+npm list -g
+
+npm update -g
+npm install -g @vue/cli
+
+npm list -g
+npm install -g npm@8.5.5
+npm --version
+npm list -g
+
+npm list -g --depth=2
+
+=================================================
+
+https://www.heroku.com/
+
+https://github.com/
+
+npm install -g serve
+
+npm list -g --depth=0
+
+https://code.visualstudio.com/
+install visual studio code (tick all options)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. cmd code
+2. code
+
+ctrl++, ctrl+-, ctrl+0 
+
+https://git-scm.com/
+
+https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe
+
+install git by default
+
+install vscode git extension
+
+名稱: Vetur
+識別碼: octref.vetur
+描述: Vue tooling for VS Code
+版本: 0.35.0
+發行者: Pine Wu
+VS Marketplace 連結: https://marketplace.visualstudio.com/items?itemName=octref.vetur
+
+名稱: HTML Boilerplate
+識別碼: sidthesloth.html5-boilerplate
+描述: A basic HTML5 boilerplate snippet generator.
+版本: 1.1.1
+發行者: sidthesloth
+VS Marketplace 連結: https://marketplace.visualstudio.com/items?itemName=sidthesloth.html5-boilerplate
+
+名稱: Prettier - Code formatter
+識別碼: esbenp.prettier-vscode
+描述: Code formatter using prettier
+版本: 9.5.0
+發行者: Prettier
+VS Marketplace 連結: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+
+npm cache verify
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mkdir vue_fet_0330
+
+cd vue_fet_0330
+
+mkdir vue_prepare0_babel
+
+cd vue_prepare0_babel
+git init
+npm init -y
+git status
+npm install babel-loader @babel/core @babel/cli @babel/preset-env webpack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.gitignore
+node_modules
+git status
+
+https://github.com/adobe-fonts/source-code-pro/releases/tag/2.038R-ro%2F1.058R-it%2F1.018R-VAR
+
+
+'Source Code Pro',Consolas, 'Courier New', monospace
+
+https://github.com/github/gitignore/blob/main/Node.gitignore
+
+terminal.integrated.font
+
+git config --global user.name "Mark Ho"
+git config --global user.email "mark@uuu.vue.fet"
+
+git log
+
+名稱: Git Graph
+識別碼: mhutchie.git-graph
+描述: View a Git Graph of your repository, and perform Git actions from the graph.
+版本: 1.30.0
+發行者: mhutchie
+VS Marketplace 連結: https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://cli.github.com/
+
+gh --version
+
+2. create project from github
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+git remote add origin https://github.com/change_your_username/your_project.git
+
+inside your project
+git remote add origin https://github.com/markho/vue0330.git
+
+git remote -v
+=============================================
+gh auth login
+Github
+HTTPS
+N
+Paste an authentication token
+
+gh auth status
+
+git push -u origin master
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+README.md
+#　ＶＵＥ　ｔｒａｉｎｉｎｇ　＠ｕｃｏｍ
+## 03-30-2022
+## node.js 16,.....
+===========================================
+under project directory
+
+node_modules\.bin\babel --version
+
+npx babel --version
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+delete *lock*
+delete node_module
+
+src/lab1_var_let_const.js
+
+let x = 5
+console.log(x)
+x += 1
+console.log(x)
+const y = 'hello world x=5'
+console.log(y)
+const z = `hello world x=${x}`
+console.log(z)
+
+node src\lab1_var_let_const.js
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+npx babel src\lab1_var_let_const.js
+
+.babelrc
+
+{
+    "presets":["@babel/preset-env"]
+}
+
+npx babel src\lab1_var_let_const.js
+
+=============================================
+make a directory out
+npx babel src\lab1_var_let_const.js --out-file out\lab1_out.js
+
+
+  "scripts": {
+    "build":"babel src -d out",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+npm run build
+
+
+lab2_function.js
+
+function displayCourseName(name) {
+    console.log(`course name=${name}`)
+}
+
+const displayCourseName2 = (name) => {
+    console.log(`course name=${name}`)
+}
+
+const displayCourseName3 = name => {
+    console.log(`course name=${name}`)
+}
+const displayCourseName4 = () => {
+    console.log('course name=...')
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[full lab2]
+function displayCourseName(name) {
+    console.log(`course name=${name}`)
+}
+
+const displayCourseName2 = (name) => {
+    console.log(`course name=${name}`)
+}
+
+const displayCourseName3 = name => {
+    console.log(`course name=${name}`)
+}
+const displayCourseName4 = () => {
+    console.log('course name=...')
+}
+const earning = (attendee) => {
+    return attendee * 8000
+}
+const earning2 = attendee => attendee * 8000
+displayCourseName("vue")
+displayCourseName2("react and spring boot")
+displayCourseName3('vue with reset')
+displayCourseName4()
+console.log(`earning1 = ${earning(10)}`)
+console.log(`earning2 = ${earning2(20)}`)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+lab3_course.js
+
+const course = {
+    name: "React with Spring Boot",
+    duration: 32
+}
+
+export default course
+
+lab3_main.js
+
+import xx from "./lab3_course"
+import yy from "./lab3_course.js"
+
+console.log(xx)
+console.log(yy)
+
+npm run build
+
+lab3_common.js
+
+export const default_header = () => { console.log("___I am a header___") }
+export const MAX_SIZE = 50
+
+lab3_main.js (again)
+import xx from "./lab3_course"
+import yy from "./lab3_course.js"
+import {MAX_SIZE, default_header} from "./lab3_common"
+console.log(xx)
+console.log(yy)
+console.log(MAX_SIZE)
+default_header()
+
+npm run build
+
+
+ctrl+,
+lab4_main2.js
+import xx from "./lab3_course"
+import yy from "./lab3_course.js"
+import * as bundled from "./lab3_common"
+console.log("this is lab4")
+console.log(xx)
+console.log(yy)
+console.log(bundled.MAX_SIZE)
+bundled.default_header()
+
+npm run build
+execute new out\lab4
+
+("type":"module")
+node src\lab3_main.js
+node --es-module-specifier-resolution=node   src\lab3_main.js
+
+
+revert change,
+npm run build
+node out\lab3_main.js
+
+
+https://vuejs.org/
+
+create a directory vue1_plain_html
+open with visual studio
+git init
+create index.html
+
+
+  <body>
+    <label for="plan">Plan</label>
+    <input type="text" id="plan" />
+    <button>Add Plan</button>
+    <ul></ul>
+
+    <script src="" async defer></script>
+  </body>
+
+serve .
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+commit code
+git remote add....
+git push -u origin master
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cd C:\temp_phw
+git clone https://github.com/markho/vue0330.git
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.js
+
+const button1 = document.querySelector('button')
+const input1 = document.querySelector('input')
+const list1 = document.querySelector('ul')
+
+function addPlanItem() {
+    console.log("will add a plan here...")
+}
+
+button1.addEventListener('click', addPlanItem)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const button1 = document.querySelector('button')
+const input1 = document.querySelector('input')
+const list1 = document.querySelector('ul')
+
+function addPlanItem() {
+    const item = document.createElement('li')
+    item.textContent = input1.value
+    list1.appendChild(item)
+}
+
+button1.addEventListener('click', addPlanItem)

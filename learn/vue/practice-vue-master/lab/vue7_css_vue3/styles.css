@@ -1,0 +1,10 @@
+.demo {
+    width: calc(80% - 32px);
+    height: 80px;
+    margin: 12px;
+    border:4px dashed #ccc;
+}
+.isSelected {
+    border-color:blueviolet;
+    background-color: aqua;
+}

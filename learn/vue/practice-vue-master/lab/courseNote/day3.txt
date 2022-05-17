@@ -1,0 +1,740 @@
+https://jestjs.io/
+https://elixir-lang.org/
+https://storybook.js.org/
+
+==> add to lab <==
+
+https://www.bugsnag.com/
+
+https://firebase.google.com/
+
+
+make a project directory: vue7_css_vue3
+git init
+
+index.html
+(html5 auto complete)
+
+styles.css
+.demo {
+    width: calc(80% - 32px);
+    height: 80px;
+    margin: 12px;
+    border:4px dashed #ccc;
+}
+
+<link rel="stylesheet" href="styles.css">
+
+=======================================
+
+serve .
+
+=====================================
+        <section id="app">
+            <div class="demo">Mountain</div>
+            <div class="demo">Sky</div>
+            <div class="demo">Ocean</div>
+        </section>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() { return{} },
+    methods: {}
+})
+app.mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<script src="https://unpkg.com/vue@3"></script>
+<script src="app.js" async defer></script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       <section id="app">
+            <div class="demo" style="border-color: green;">Mountain</div>
+            <div class="demo" style="border-color: blue;">Sky</div>
+            <div class="demo" style="border-color: red;">Ocean</div>
+        </section>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            div1Selected: false,
+            div2Selected: false,
+            div3Selected: false
+        }
+    },
+    methods: {
+        divSelected(id) {
+            if (id === 1) {
+                this.div1Selected = true;
+            } else if (id === 2) {
+                this.div2Selected = true;
+            } else if (id === 3) {
+                this.div3Selected = true;
+            }
+        }
+    }
+})
+app.mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        <section id="app">
+            <div class="demo" style="border-color: green;" @click="divSelected(1)">Mountain</div>
+            <div class="demo" style="border-color: blue;" @click="divSelected(2)">Sky</div>
+            <div class="demo" style="border-color: red;" @click="divSelected(3)">Ocean</div>
+        </section>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+style="border-color: green;"
+:style="border-color: green;"
+:style="{border-color: green;}"
+:style="{borderColor: 'green'}"
+:style="{borderColor: div1Selected?'green':'#ccc'}"
+
+
+        <section id="app">
+            <div class="demo" :style="{borderColor: div1Selected?'green':'#ccc'}" @click="divSelected(1)">Mountain</div>
+            <div class="demo" :style="{borderColor: div2Selected?'blue':'#ccc'}" @click="divSelected(2)">Sky</div>
+            <div class="demo" :style="{borderColor: div3Selected?'red':'#ccc'}" @click="divSelected(3)">Ocean</div>
+        </section>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+styles.css
+
+.demo {
+    width: calc(80% - 32px);
+    height: 80px;
+    margin: 12px;
+    border:4px dashed #ccc;
+}
+.isSelected {
+    border-color:blueviolet;
+    background-color: aqua;
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <section id="app">
+      <div
+        :class="div1Selected?'demo isSelected':'demo'"
+        @click="divSelected(1)"
+      >
+        Mountain
+      </div>
+      <div
+        :class="div2Selected?'demo isSelected':'demo'"
+        @click="divSelected(2)"
+      >
+        Sky
+      </div>
+      <div
+        :class="div3Selected?'demo isSelected':'demo'"
+        @click="divSelected(3)"
+      >
+        Ocean
+      </div>
+    </section>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      <div :class="{demo:true,isSelected:div1Selected}" @click="divSelected(1)">
+        Mountain
+      </div>
+      <div :class="{demo:true,isSelected:div2Selected}" @click="divSelected(2)">
+        Sky
+      </div>
+      <div :class="{demo:true,isSelected:div3Selected}" @click="divSelected(3)">
+        Ocean
+      </div>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      <div class="demo" :class="{isSelected:div1Selected}" @click="divSelected(1)">
+        Mountain
+      </div>
+      <div class="demo" :class="{isSelected:div2Selected}" @click="divSelected(2)">
+        Sky
+      </div>
+      <div class="demo" :class="{isSelected:div3Selected}" @click="divSelected(3)">
+        Ocean
+      </div>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    methods: {
+        divSelected(id) {
+            if (id === 1) {
+                this.div1Selected = !this.div1Selected;
+            } else if (id === 2) {
+                this.div2Selected = !this.div2Selected;
+            } else if (id === 3) {
+                this.div3Selected = !this.div3Selected;
+            }
+        }
+    }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            div1Selected: false,
+            div2Selected: false,
+            div3Selected: false
+        }
+    },
+    methods: {
+        divSelected(id) {
+            if (id === 1) {
+                this.div1Selected = !this.div1Selected;
+            } else if (id === 2) {
+                this.div2Selected = !this.div2Selected;
+            } else if (id === 3) {
+                this.div3Selected = !this.div3Selected;
+            }
+        }
+    },
+    computed: {
+        div1Classes() {
+            return { isSelected: this.div1Selected }
+        },
+        div2Classes() {
+            return { isSelected: this.div2Selected }
+        },
+        div3Classes() {
+            return { isSelected: this.div3Selected }
+        }
+    }
+})
+app.mount("#app")
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <section id="app">
+      <div class="demo" :class="div1Classes" @click="divSelected(1)">
+        Mountain
+      </div>
+      <div class="demo" :class="div2Classes" @click="divSelected(2)">
+        Sky
+      </div>
+      <div class="demo" :class="div3Classes" @click="divSelected(3)">
+        Ocean
+      </div>
+    </section>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+git checkout css_list
+
+
+      <div :class="['demo',{isSelected:div1Selected}]" @click="divSelected(1)">
+        Mountain
+      </div>
+      <div :class="['demo',{isSelected:div2Selected}]" @click="divSelected(2)">
+        Sky
+      </div>
+      <div :class="['demo',{isSelected:div3Selected}]" @click="divSelected(3)">
+        Ocean
+      </div>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    methods: {
+        divSelected(id) {
+            if (id === 1) {
+                this.div1Selected = !this.div1Selected;
+            } else if (id === 2) {
+                this.div2Selected = !this.div2Selected;
+            } else if (id === 3) {
+                this.div3Selected = !this.div3Selected;
+            }
+        }
+    }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+git checkout css_list
+git checkout master
+
+vue8_conditional_vue3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://unpkg.com/vue@3"></script>
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>conditional rendering & list</h1>
+        <section id="app">
+            <input type="text"/>
+            <button>add a course</button>
+            <p>No course</p>
+            <ul>
+                <li>Course</li>
+            </ul>
+        </section>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script src="" async defer></script>
+    </body>
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data() { return { courses: [] } },
+    computed: {},
+    methods: {}
+}).mount("#app")
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<p v-if="courses.length===0">No course</p>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data() { return { courses: [],
+        courseContent:"initial" } },
+    computed: {},
+    methods: {addCourse(){
+        this.courses.push(this.courseContent)
+    }}
+}).mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <section id="app">
+      <input type="text" v-model="courseContent" />
+      <button @click="addCourse">add a course</button>
+      <p v-if="courses.length===0">No course</p>
+      <ul v-else>
+        <li>Course</li>
+      </ul>
+    </section>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      <p v-show="courses.length===0">No course</p>
+      <ul v-show="courses.length>0">
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<li v-for="c in courses">{{c}}</li>
+
+<li v-for="(c,i) in courses">[{{i}}]{{c}}</li>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data() {
+        return {
+            courses: [],
+            courseContent: "initial",
+            poop: {
+                name: "POOP",
+                duration: 35,
+                period: ['Sat', 'Sun'],
+                location: ['Taipei', 'Remote'],
+                instructor: {
+                    name: "Mark",
+                    location: 'Taipei'
+                }
+            }
+        }
+    },
+    computed: {},
+    methods: {
+        addCourse() {
+            this.courses.push(this.courseContent)
+        }
+    }
+}).mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <section id="app">
+      <input type="text" v-model="courseContent" />
+      <button @click="addCourse">add a course</button>
+      <p v-if="courses.length===0">No course</p>
+      <ul v-else>
+        <li v-for="(c,i) in courses">[{{i}}]{{c}}</li>
+      </ul>
+      <br />
+      <ul>
+        <li v-for="value in poop">value={{value}}</li>
+      </ul>
+      <br />
+      <ul>
+        <li v-for="(value,key) in poop">[{{key}}]={{value}}</li>
+      </ul>
+      <br />
+      <ul>
+        <li v-for="(value,key,index) in poop">({{index}})[{{key}}]={{value}}</li>
+      </ul>
+    </section>
+~~~~~~~~~~~~~~~~~~~~~~~~
+<li v-for="(c,i) in courses" @click="removeCourse(i)">[{{i}}]{{c}}</li>
+
+    methods: {
+        addCourse() {
+            this.courses.push(this.courseContent)
+        },
+        removeCourse(i){
+            this.courses.splice(i,1)
+        }
+    }
+~~~~~~~~~~~~~~~~~~~~~~~~
+        <li v-for="(c,i) in courses" @click="removeCourse(i)">
+          [{{i}}]{{c}}<input type="text" />
+        </li>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        <li v-for="(c,i) in courses" @click="removeCourse(i)">
+          [{{i}}]{{c}}<input type="text" @click.stop />
+        </li>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        <li v-for="(c,i) in courses" @click="removeCourse(i)" :key="c">
+          [{{i}}]{{c}}<input type="text" @click.stop />
+        </li>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+demo9
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <section id="app">
+      <ul>
+        <li>COMPONENT1</li>
+        <li>COMPONENT2</li>
+      </ul>
+    </section>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <script src="" async defer></script>
+  </body>
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.js
+
+const app = Vue.createApp({
+    data() {
+        return {
+            courses: [{ id: "POOP", name: "Python OOP", duration: 35 },
+            { id: "BDPY", name: "python and big data", duration: 35 }],
+            detailsVisible: true
+        }
+    },
+    computed: {},
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible;
+        }
+    }
+})
+
+app.mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <section id="app">
+      <ul>
+        <li v-for="course in courses" :key="course.id">
+            <h2>{{course.id}}</h2>
+            <button @click="toggleCourseDetail">Show detail</button>
+            <ul v-if="detailsVisible">
+                <li>{{course.name}}</li>
+                <li>{{course.duration}}</li>
+            </ul>
+        </li>
+        
+      </ul>
+    </section>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.component("course-content",{template:``})
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            course: { id: "POOP", name: "Python OOP", duration: 35 },
+            courses: [{ id: "POOP", name: "Python OOP", duration: 35 },
+            { id: "BDPY", name: "python and big data", duration: 35 }],
+            detailsVisible: true
+        }
+    },
+    computed: {},
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible;
+        }
+    }
+})
+app.component("course-content", {
+    template: `
+<li>
+<h2>{{course.id}}</h2>
+<button @click="toggleCourseDetail">Show detail</button>
+<ul v-if="detailsVisible">
+    <li>{{course.name}}</li>
+    <li>{{course.duration}}</li>
+</ul>
+</li>
+
+
+
+`})
+app.mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+
+            courses: [{ id: "POOP", name: "Python OOP", duration: 35 },
+            { id: "BDPY", name: "python and big data", duration: 35 }],
+            detailsVisible: true
+        }
+    },
+    computed: {},
+
+})
+app.component("course-content", {
+    template: `
+<li>
+<h2>{{course.id}}</h2>
+<button @click="toggleCourseDetail">Show detail</button>
+<ul v-if="detailsVisible">
+    <li>{{course.name}}</li>
+    <li>{{course.duration}}</li>
+</ul>
+</li>
+
+
+
+`, data() {
+        return {
+            course: { id: "POOP", name: "Python OOP", duration: 35 },
+            detailsVisible: true
+        }
+    },
+    methods: {
+        toggleCourseDetail() {
+            this.detailsVisible = !this.detailsVisible;
+        }
+    }
+})
+app.mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      <ul>
+        <course-content></course-content>
+        <course-content></course-content>
+        <course-content></course-content>
+      </ul>
+
+
+npm list -g
+npm update -g
+npm list -g
+
+vue create vue10_component2_vue3
+select default vue3
+code vue10_component2_vue3
+
+npm run serve
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
+</template>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HelloWorld.vue
+<template>
+  <div class="hello">
+    <h3>My Course</h3>
+    <ul>
+      <li>**</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      courses: [{ id: "poop", name: "Python OOP", duration: 35 }],
+    };
+  },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
+
+
+CourseIntro.vue
+
+<template></template>
+<script>
+export default {};
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <li>
+    <h2>{{ course.id }}</h2>
+    <button @click="toggleCourseDetail">Show detail</button>
+    <ul v-if="detailsVisible">
+      <li>{{ course.name }}</li>
+      <li>{{ course.duration }}</li>
+    </ul>
+  </li>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      course: { id: "POOP", name: "Python OOP", duration: 35 },
+      detailsVisible: true,
+    };
+  },
+  methods: {
+    toggleCourseDetail() {
+      this.detailsVisible = !this.detailsVisible;
+    },
+  },
+};
+</script>
+
+npm run serve
+
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import CourseIntro from "./components/CourseIntro.vue"
+const app = createApp(App)
+app.component("course-intro", CourseIntro)
+app.mount('#app')
+
+
+App.vue
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <course-intro></course-intro>
+  <course-intro></course-intro>
+  <course-intro></course-intro>
+</template>
+
+<script>
+import HelloWorld from './components/HelloWorld.vue'
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld
+  }
+}
+</script>
+
+#app ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#app li {
+  box-shadow: 0 4px 8px rgba(0, 0, 128, 0.26);
+  margin: 1rem auto;
+  border-radius: 5px;
+  text-align: center;
+  width: 50%;
+  max-width: 40rem;
+}
+#app button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px sold #ff0077;
+  background-color: #c0ffee;
+  color: black;
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <course-intro id="poop" name="python oop" duration=35></course-intro>
+  <course-intro id="bdpy" name="python and big data" duration=35></course-intro>
+</template>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<script>
+export default {
+  props: ["id", "name", "duration"],
+  data() {
+    return {
+      course: { id: "POOP", name: "Python OOP", duration: 35 },
+      detailsVisible: true,
+    };
+  },
+  methods: {
+    toggleCourseDetail() {
+      this.detailsVisible = !this.detailsVisible;
+    },
+  },
+};
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<template>
+  <li>
+    <h2>{{ id }}</h2>
+    <button @click="toggleCourseDetail">Show detail</button>
+    <ul v-if="detailsVisible">
+      <li>{{ name }}</li>
+      <li>{{ duration }}</li>
+    </ul>
+  </li>
+</template>
+<script>
+export default {
+  props: ["id", "name", "duration"],
+  data() {
+    return {
+      
+      detailsVisible: true,
+    };
+  },
+  methods: {
+    toggleCourseDetail() {
+      this.detailsVisible = !this.detailsVisible;
+    },
+  },
+};
+</script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+git branch explain_props
+git checkout explain_props
+
+  <course-intro id="poop" name="python oop" duration=35 current=true></course-intro>
+  <course-intro id="bdpy" name="python and big data" duration=35 current=false></course-intro>
+
+props: ["id", "name", "duration","current"],
+
+
+<h2>{{ id }}-{{current}}</h2>
+
+  methods: {
+    toggleCourseDetail() {
+      this.detailsVisible = !this.detailsVisible;
+    },
+    toggleCurrent() {
+        this.current = true
+    }
+  },
+
+<button @click="toggleCurrent">Set current</button>

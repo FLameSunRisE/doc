@@ -1,0 +1,1251 @@
+﻿vue1_plain_html
+
+serve .
+中文
+~~~~~~~~~~~~~~~~~~~~~~
+update app.js
+
+const button1 = document.querySelector('button')
+const input1 = document.querySelector('input')
+const list1 = document.querySelector('ul')
+
+function addPlanItem() {
+    console.log("HAHA")
+    const item = document.createElement('li')
+    item.textContent = input1.value
+    list1.appendChild(item)
+    input1.value=''
+}
+
+button1.addEventListener('click', addPlanItem)
+~~~~~~~~~~~~~~~~~~~~~~
+mkdir vue2_html_vue3api
+cd vue2_html_vue3api
+code .
+
+index.html
+
+https://vuejs.org/guide/quick-start.html#with-build-tools
+
+
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <script src="https://unpkg.com/vue@3"></script> <!-- add this -->
+        <script src="app.js" async defer></script> <!-- add this -->
+    </body>
+
+create a blank app.js
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body> <-- add from here-->
+    <label for="plan">Plan</label>
+    <input type="text" id="plan" />
+    <button>Add Plan</button>
+    <ul></ul> <-- to here--->
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </body>
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp().mount('#myapp')
+
+Vue.createApp({
+    data() { return {} },
+    methods: {}
+}).mount('#myapp')
+
+
+Vue.createApp({
+    data() {
+        return {
+            plans: [],
+            value: ''
+        }
+    },
+    methods: {
+        addPlan() {
+            this.plans.push(this.value)
+        }
+    }
+}).mount('#myapp')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <div id="myapp">
+      <label for="plan">Plan</label>
+      <input type="text" id="plan" />
+      <button>Add Plan</button>
+      <ul></ul>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </body>
+</html>
+
+https://chrome.google.com/webstore/search/vue?hl=zh-TW
+https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg?hl=zh-TW
+https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd/related?hl=zh-TW
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<input type="text" id="plan" v-model="value"/>
+
+<button v-on:click="addPlan">Add Plan</button>
+
+===================================================
+
+      <ul>
+          <li v-for="plan in plans">***</li>
+      </ul>
+
+
+<li v-for="plan in plans">{{plan}}</li>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <div id="myapp">
+      <label for="plan">Plan</label>
+      <input type="text" id="plan" v-model="value"/>
+      <button v-on:click="addPlan">Add Plan</button>
+      <ul>
+          <li v-for="plan in plans">{{plan}}</li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </body>
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data() {
+        return {
+            plans: [],
+            value: ''
+        }
+    },
+    methods: {
+        addPlan() {
+            this.plans.push(this.value)
+            this.value = ''
+        }
+    }
+}).mount('#myapp')
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+copy vue2_html_vue3api
+vue3_html_vue2api
+
+https://v2.vuejs.org/v2/guide/installation.html?redirect=true
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+serve .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+var vue = new Vue({
+    el: "#myapp",
+    data() {
+        return {
+            plans: [],
+            value: ''
+        }
+    },
+    methods: {
+        addPlan() {
+            this.plans.push(this.value)
+            this.value = ''
+        }
+    }
+})
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://logrocket.com/
+
+
+vue4_html_vue3
+
+index.html
+~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://unpkg.com/vue@3"></script>
+    </head>
+    <body>
+        <section id="my-planner">
+            <h2>My Yearly Plan</h2>
+            <p></p>
+        </section>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
+~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data: function () {
+        return {
+            primaryGoal: "have a happy life!"
+        }
+    }
+})
+app.mount("#my-planner")
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script> <!-- add here-->
+  </head>
+  <body>
+    <section id="my-planner">
+      <h2>My Yearly Plan</h2>
+      <p>{{primaryGoal}}</p> <!-- modify here -->
+    </section>
+  </body>
+</html>
+
+
+
+<script src="app.js" async defer></script> <-- OK
+<script src="app.js"></script> <-- KO
+<script src="app.js" async></script> <-- OK, but async defer is better
+
+<script src="app.js"></script> <-- at bottom, no need to use async defer
+
+https://dash.plotly.com/introduction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data: function () {
+        return {
+            primaryGoal: "have a happy life!",
+            planLink:"https://trello.com/"
+        }
+    }
+})
+app.mount("#my-planner")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+</head>
+<body>
+    <section id="my-planner">
+        <h2>My Yearly Plan</h2>
+        <p>{{primaryGoal}}</p>
+        <a href="{{planLink}}">{{planLink}}</a>
+    </section>
+    
+</body>
+</html>
+
+<a v-bind:href="planLink">Trello link==>{{planLink}}</a>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data: function () {
+        return {
+            primaryGoal: "have a happy life!",
+            planLink: "https://trello.com/"
+        }
+    },
+    methods: {
+        // x:function(){},
+        outputMessage() {
+            if (Math.random() < 0.5) {
+                return "work hard"
+            } else {
+                return "work harder"
+            }
+        }
+    }
+})
+app.mount("#my-planner")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <section id="my-planner">
+      <h2>My Yearly Plan</h2>
+      <p>{{primaryGoal}}</p>
+      <p>{{Math.random()}}</p>
+      <p>{{outputMessage()}}</p>
+      <a v-bind:href="planLink">Trello link==>{{planLink}}</a>
+    </section>
+  </body>
+</html>
+
+
+https://www.typescriptlang.org/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.js
+
+const app = Vue.createApp({
+    data: function () {
+        return {
+            primaryGoal1: "have a happy life!",
+            primaryGoal2: "make a lot of money",
+            primaryGoal3: "have a strong mind",
+            planLink: "https://trello.com/"
+        }
+    },
+    methods: {
+        // x:function(){},
+        outputMessage() {
+            const number1 = Math.random()
+            if (number1 < 0.3) {
+                return this.primaryGoal1
+            } else if (number1 < 0.6) {
+                return this.primaryGoal2
+            } else {
+                return this.primaryGoal3
+            }
+        }
+    }
+})
+app.mount("#my-planner")
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data: function () {
+        return {
+            primaryGoal1: "have a <em>happy</em> life!",
+            primaryGoal2: "make a lot of <em>money</em>",
+            primaryGoal3: "have a <em>strong</em> mind",
+            planLink: "https://trello.com/"
+        }
+    },
+    methods: {
+        // x:function(){},
+        outputMessage() {
+            const number1 = Math.random()
+            if (number1 < 0.3) {
+                return this.primaryGoal1
+            } else if (number1 < 0.6) {
+                return this.primaryGoal2
+            } else {
+                return this.primaryGoal3
+            }
+        }
+    }
+})
+app.mount("#my-planner")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <section id="my-planner">
+      <h2>My Yearly Plan</h2>
+      <p v-html="primaryGoal"></p>
+      <p v-html="Math.random()"></p>
+      <p v-html="outputMessage()"></p>
+      <a v-bind:href="planLink">Trello link==>{{planLink}}</a>
+    </section>
+  </body>
+</html>
+~~~~~~~~~~~~~~~~~~~~
+vue5_callback_vue3
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <h1>Event Binding</h1>
+    <section id="app">
+      <button>Increase1</button>
+      <button>Decrease1</button>
+      <p>Result1:{{counter1}}</p>
+      <br />
+    </section>
+  </body>
+</html>
+~~~~~~~~~~~~~~~~~
+app.js
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0
+        }
+    },
+    methods: {},
+})
+app.mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <h1>Event Binding</h1>
+    <section id="app">
+      <button v-on:click="counter1++">Increase1</button>
+      <button v-on:click="counter1--">Decrease1</button>
+      <p>Result1:{{counter1}}</p>
+      <br />
+    </section>
+  </body>
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<app.js>
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0
+        }
+    },
+    methods: {
+        increase1() { this.counter1 = this.counter1 + 1 },
+        decrease1() { this.counter1 = this.counter1 - 1 }
+    },
+})
+app.mount("#app")
+
+
+
+      <button v-on:click="increase1">Increase1</button>
+      <button v-on:click="decrease1">Decrease1</button>
+
+
+      <button v-on:click="increase1()">Increase1</button>
+      <button v-on:click="decrease1()">Decrease1</button>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0
+        }
+    },
+    methods: {
+        increase1() { this.counter1 = this.counter1 + 1 },
+        decrease1() { this.counter1 = this.counter1 - 1 },
+        increase2(step) { this.counter1 += step },
+        decrease2(step) { this.counter1 -= step }
+    },
+})
+app.mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <h1>Event Binding</h1>
+    <section id="app">
+      <button v-on:click="increase1">Increase1</button>
+      <button v-on:click="decrease1">Decrease1</button>
+      <button v-on:click="increase2(2)">Increase2</button>
+      <button v-on:click="decrease2(2)">Decrease2</button>
+      <button v-on:click="increase2(3)">Increase3</button>
+      <button v-on:click="decrease2(3)">Decrease3</button>
+      <p>Result1:{{counter1}}</p>
+      <br />
+    </section>
+  </body>
+</html>
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0,
+            todo: '' <!-- 1st -->
+        }
+    },
+    methods: {
+        increase1() { this.counter1 = this.counter1 + 1 },
+        decrease1() { this.counter1 = this.counter1 - 1 },
+        increase2(step) { this.counter1 += step },
+        decrease2(step) { this.counter1 -= step },
+        setToDo(event) { <!-- 2nd -->
+            this.todo = event.target.value
+        }
+    },
+})
+app.mount("#app")
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <h1>Event Binding</h1>
+    <section id="app">
+      <button v-on:click="increase1">Increase1</button>
+      <button v-on:click="decrease1">Decrease1</button>
+      <button v-on:click="increase2(2)">Increase2</button>
+      <button v-on:click="decrease2(2)">Decrease2</button>
+      <button v-on:click="increase2(3)">Increase3</button>
+      <button v-on:click="decrease2(3)">Decrease3</button>
+      <p>Result1:{{counter1}}</p>
+      <br /> <!-- 3rd -->
+        <input type="text" v-on:input='setToDo'/>
+        <p>what we expected to do is:{{todo}}</p>
+    </section>
+  </body>
+</html>
+https://developer.mozilla.org/en-US/docs/Web/API/Event
+
+
+<input type="text" v-on:input='setToDo($event, "I want to")'/>
+
+
+    methods: {
+        increase1() { this.counter1 = this.counter1 + 1 },
+        decrease1() { this.counter1 = this.counter1 - 1 },
+        increase2(step) { this.counter1 += step },
+        decrease2(step) { this.counter1 -= step },
+        setToDo(event, greeting) {
+            this.todo = `${greeting} ${event.target.value}`
+        }
+    },
+~~~~~~~~~~~~~~~~~~~~~~~~~
+    methods: {
+        submitForm() {
+            alert("already submitted")
+        },
+        increase1() { this.counter1 = this.counter1 + 1 },
+        decrease1() { this.counter1 = this.counter1 - 1 },
+        increase2(step) { this.counter1 += step },
+        decrease2(step) { this.counter1 -= step },
+        setToDo(e, greeting) {
+            this.todo = `${greeting} ${e.target.value}`
+        }
+    },
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <h1>Event Binding</h1>
+    <section id="app">
+      <button v-on:click="increase1">Increase1</button>
+      <button v-on:click="decrease1">Decrease1</button>
+      <button v-on:click="increase2(2)">Increase2</button>
+      <button v-on:click="decrease2(2)">Decrease2</button>
+      <button v-on:click="increase2(3)">Increase3</button>
+      <button v-on:click="decrease2(3)">Decrease3</button>
+      <p>Result1:{{counter1}}</p>
+      <br />
+      <input type="text" v-on:input='setToDo($event, "I want to")' />
+      <p>what we expected to do is:{{todo}}</p>
+      <form v-on:submit="submitForm">
+        <input type="text" />
+        <button>Login</button>
+      </form>
+    </section>
+  </body>
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    methods: {
+        submitForm() {
+            alert("already submitted")
+        },
+        submitForm2(event) {
+            event.preventDefault()
+            alert("already submit form2")
+        },
+        increase1() { this.counter1 = this.counter1 + 1 },
+        decrease1() { this.counter1 = this.counter1 - 1 },
+        increase2(step) { this.counter1 += step },
+        decrease2(step) { this.counter1 -= step },
+        setToDo(e, greeting) {
+            this.todo = `${greeting} ${e.target.value}`
+        }
+    },
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <h1>Event Binding</h1>
+    <section id="app">
+      <button v-on:click="increase1">Increase1</button>
+      <button v-on:click="decrease1">Decrease1</button>
+      <button v-on:click="increase2(2)">Increase2</button>
+      <button v-on:click="decrease2(2)">Decrease2</button>
+      <button v-on:click="increase2(3)">Increase3</button>
+      <button v-on:click="decrease2(3)">Decrease3</button>
+      <p>Result1:{{counter1}}</p>
+      <br />
+      <input type="text" v-on:input='setToDo($event, "I want to")' />
+      <p>what we expected to do is:{{todo}}</p>
+      <form v-on:submit="submitForm">
+        <input type="text" />
+        <button>Login</button>
+      </form>
+      <form v-on:submit="submitForm2">
+        <input type="text" />
+        <button>Login2</button>
+      </form>
+      <form v-on:submit.prevent="submitForm">
+        <input type="text" />
+        <button>Login3</button>
+      </form>
+
+    </section>
+  </body>
+</html>
+
+
+      <button v-on:click.right="increase2(10)">Increase10</button>
+      <button v-on:click.right="decrease2(10)">Decrease10</button>
+~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <h1>Event Binding</h1>
+    <section id="app">
+      <button v-on:click="increase1">Increase1</button>
+      <button v-on:click="decrease1">Decrease1</button>
+      <button v-on:click="increase2(2)">Increase2</button>
+      <button v-on:click="decrease2(2)">Decrease2</button>
+      <button v-on:click="increase2(3)">Increase3</button>
+      <button v-on:click="decrease2(3)">Decrease3</button>
+      <button v-on:click.right="increase2(10)">Increase10</button>
+      <button v-on:click.right="decrease2(10)">Decrease10</button>
+
+      <p>Result1:{{counter1}}</p>
+      <br />
+      <input
+        type="text"
+        v-on:input="setUrgent"
+        v-on:keyup.enter="commitUrgent"
+      />
+      <p>current urgent issue:{{urgent}}</p>
+      <p>committed urgent issue:{{checkedUrgent}}</p>
+      <input type="text" v-on:input='setToDo($event, "I want to")' />
+      <p>what we expected to do is:{{todo}}</p>
+      <form v-on:submit="submitForm">
+        <input type="text" />
+        <button>Login</button>
+      </form>
+      <form v-on:submit="submitForm2">
+        <input type="text" />
+        <button>Login2</button>
+      </form>
+      <form v-on:submit.prevent="submitForm">
+        <input type="text" />
+        <button>Login3</button>
+      </form>
+    </section>
+  </body>
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~
+const app = Vue.createApp({
+    data() {
+        return {
+            counter1: 0,
+            todo: '',
+            urgent: "",
+            checkedUrgent: ""
+        }
+    },
+    methods: {
+        commitUrgent() {
+
+        },
+        setUrgent(event) {
+            this.urgent = event.target.value
+        },
+        submitForm() {
+            alert("already submitted")
+        },
+        submitForm2(event) {
+            event.preventDefault()
+            alert("already submit form2")
+        },
+        increase1() { this.counter1 = this.counter1 + 1 },
+        decrease1() { this.counter1 = this.counter1 - 1 },
+        increase2(step) { this.counter1 += step },
+        decrease2(step) { this.counter1 -= step },
+        setToDo(e, greeting) {
+            this.todo = `${greeting} ${e.target.value}`
+        }
+    },
+})
+app.mount("#app")
+==>
+        commitUrgent() {
+            this.checkedUrgent = this.urgent;
+        },
+==>
+
+      <br />
+      <button v-on:click="increase3(4)">Increase counter2 by 4</button>
+      <button v-on:click="decrease3(4)">Decrease counter2 by 4</button>
+      <p v-once>initial counter2 value={{counter2}}</p>
+      <p>current counter2 value={{counter2}}</p>
+      <br/>
+
+
+    methods: {
+        increase3(step) {
+            this.counter2 += step;
+        },
+        decrease3(step) {
+            this.counter2 -= step;
+        },
+        commitUrgent() {
+            this.checkedUrgent = this.urgent;
+        },
+        setUrgent(event) {
+            this.urgent = event.target.value
+        },
+        submitForm() {
+            alert("already submitted")
+        },
+        submitForm2(event) {
+            event.preventDefault()
+            alert("already submit form2")
+        },
+        increase1() { this.counter1 = this.counter1 + 1 },
+        decrease1() { this.counter1 = this.counter1 - 1 },
+        increase2(step) { this.counter1 += step },
+        decrease2(step) { this.counter1 -= step },
+        setToDo(e, greeting) {
+            this.todo = `${greeting} ${e.target.value}`
+        }
+    },
+
+~~~~~~~~~~~~~~~~~~~~~~~~
+vue6_two_way_binding
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://unpkg.com/vue@3"></script>
+        <script src="app.js" async defer></script>
+    </head>
+    <body>
+        <section id="app">
+            <input type="text" v-on:input="setIssue"/>
+            <p>your issue is:{{issue}}</p>
+        </section>
+        
+    </body>
+</html>
+
+app.js
+
+Vue.createApp({
+    data() { return { issue: "" } },
+    methods: {
+        setIssue(e) {
+            this.issue = e.target.value
+        }
+    }
+}).mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data() { return { issue: "" } },
+    methods: {
+        setIssue(e) {
+            this.issue = e.target.value
+        },
+        resetIssue() {
+            this.issue = ""
+        }
+    }
+}).mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<button v-on:click="resetIssue">clear issue</button>
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://unpkg.com/vue@3"></script>
+        <script src="app.js" async defer></script>
+    </head>
+    <body>
+        <section id="app">
+            <input type="text" @input="setIssue"/>
+            <p>your issue is:{{issue}}</p>
+            <button @click="resetIssue">clear issue</button>
+        </section>
+        
+    </body>
+</html>
+
+
+<input type="text" @input="setIssue" v-bind:value="issue"/>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <body>
+        <section id="app">
+            <input type="text" @input="setIssue" v-bind:value="issue"/>
+            <p>your issue is:{{issue}}</p>
+            <button @click="resetIssue">clear issue</button>
+            <input type="text" @input="setIssue2" v-bind:value="issue2"/>
+            <p>your issue2 is:{{issue2}}</p>
+            <button @click="resetIssue">clear issue2</button>
+
+        </section>
+        
+    </body>
+~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <section id="app">
+      <input type="text" @input="setIssue" v-bind:value="issue" />
+      <p>your issue is:{{issue}}</p>
+      <button @click="resetIssue">clear issue</button>
+      <br />
+      <input type="text" v-model="issue2" />
+      <p>your issue2 is:{{issue2}}</p>
+      <button @click="resetIssue2">clear issue2</button>
+    </section>
+  </body>
+</html>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data() {
+        return {
+            issue: "",
+            issue2: ""
+        }
+    },
+    methods: {
+        setIssue(e) {
+            this.issue = e.target.value
+        },
+        resetIssue() {
+            this.issue = ""
+        },
+        resetIssue2() {
+            this.issue2 = ""
+        }
+    }
+}).mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    methods: {
+        outputIssue() {
+            console.log("output issue called, issue=", this.issue)
+            if (this.issue === "") {
+                return ""
+            }
+            return `[!!]${this.issue}`
+        },
+        setIssue(e) {
+            this.issue = e.target.value
+        },
+        resetIssue() {
+            this.issue = ""
+        },
+        resetIssue2() {
+            this.issue2 = ""
+        }
+    }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <section id="app">
+      <input type="text" @input="setIssue" v-bind:value="issue" />
+      <p>your issue is:{{issue}}</p>
+      <p>{{outputIssue()}}</p>
+      <button @click="resetIssue">clear issue</button>
+      <br />
+      <input type="text" v-model="issue2" />
+      <p>your issue2 is:{{issue2}}</p>
+      <button @click="resetIssue2">clear issue2</button>
+    </section>
+  </body>
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data() {
+        return {
+            issue: "",
+            issue2: ""
+        }
+    },
+    methods: {
+
+        setIssue(e) {
+            this.issue = e.target.value
+        },
+        resetIssue() {
+            this.issue = ""
+        },
+        resetIssue2() {
+            this.issue2 = ""
+        }
+    },
+    computed: {
+        formatIssue() {
+            console.log("output issue called, issue=", this.issue)
+            if (this.issue === "") {
+                return ""
+            }
+            return `[!!]${this.issue}`
+        },
+    }
+}).mount("#app")
+
+
+<p>{{formatIssue}}</p>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data() {
+        return {
+            issue: "",
+            issue2: "",
+            counter: 100,
+            formatIssue2: "SAMPLE"
+        }
+    },
+    methods: {
+
+        setIssue(e) {
+            this.issue = e.target.value
+        },
+        resetIssue() {
+            this.issue = ""
+        },
+        resetIssue2() {
+            this.issue2 = ""
+        },
+        increase() {
+            this.counter += 1
+        },
+        decrease() {
+            this.counter -= 1
+        }
+    },
+    computed: {
+        formatIssue() {
+            console.log("output issue called, issue=", this.issue)
+            if (this.issue === "") {
+                return ""
+            }
+            return `[!!]${this.issue}`
+        },
+    }
+}).mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <section id="app">
+      <input type="text" @input="setIssue" v-bind:value="issue" />
+      <p>your issue is:{{issue}}</p>
+      <p>{{formatIssue}}</p>
+      <button @click="resetIssue">clear issue</button>
+      <br />
+      <input type="text" v-model="issue2" />
+      <p>your issue2 is:{{issue2}}</p>
+      <button @click="resetIssue2">clear issue2</button>
+      <h2>{{formatIssue2}}</h2>
+      <br />
+      <p>{{counter}}</p>
+      <button @click="increase">increase</button>
+      <button @click="decrease">decrease</button>
+    </section>
+  </body>
+</html>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Vue.createApp({
+    data() {
+        return {
+            issue: "",
+            issue2: "",
+            counter: 100,
+            formatIssue2: "SAMPLE"
+        }
+    },
+    methods: {
+
+        setIssue(e) {
+            this.issue = e.target.value
+        },
+        resetIssue() {
+            this.issue = ""
+        },
+        resetIssue2() {
+            this.issue2 = ""
+        },
+        increase() {
+            this.counter += 1
+        },
+        decrease() {
+            this.counter -= 1
+        }
+    },
+    computed: {
+        formatIssue() {
+            console.log("output issue called, issue=", this.issue)
+            if (this.issue === "") {
+                return ""
+            }
+            return `[!!]${this.issue}`
+        },
+    },
+    watch: {
+        counter(value) {
+            if (value > 120) {
+                this.counter = 100
+            }
+        }
+    }
+}).mount("#app")
+~~~~~~~~~~~~~~~~~~~~~~
+    watch: {
+        counter(value) {
+            if (value > 120) {
+                this.counter = 100
+            }
+        },
+        issue2(value, oldValue) {
+            this.formatIssue2 = `[從${oldValue}變成${value}]`
+        }
+    }

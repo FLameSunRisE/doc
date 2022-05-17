@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" async defer></script>
+  </head>
+  <body>
+    <h1>Event Binding</h1>
+    <section id="app">
+      <button v-on:click="increase1">Increase1</button>
+      <button v-on:click="decrease1">Decrease1</button>
+      <button v-on:click="increase2(2)">Increase2</button>
+      <button v-on:click="decrease2(2)">Decrease2</button>
+      <button v-on:click="increase2(3)">Increase3</button>
+      <button v-on:click="decrease2(3)">Decrease3</button>
+      <button v-on:click.right="increase2(10)">Increase10</button>
+      <button v-on:click.right="decrease2(10)">Decrease10</button>
+      <br />
+      <button v-on:click="increase3(4)">Increase counter2 by 4</button>
+      <button v-on:click="decrease3(4)">Decrease counter2 by 4</button>
+      <p v-once>initial counter2 value={{counter2}}</p>
+      <p>current counter2 value={{counter2}}</p>
+      <br/>
+      <p>Result1:{{counter1}}</p>
+      <br />
+      <!-- v-on  -->
+      <input
+        type="text"
+        v-on:input="setUrgent"
+        v-on:keyup.enter="commitUrgent"
+      />
+      <p>current urgent issue:{{urgent}}</p>
+      <p>committed urgent issue:{{checkedUrgent}}</p>
+      <!-- v-on end -->
+      <input type="text" v-on:input='setToDo($event, "I want to")' />
+      <p>what we expected to do is:{{todo}}</p>
+      <form v-on:submit="submitForm">
+        <input type="text" />
+        <button>Login</button>
+      </form>
+      <form v-on:submit="submitForm2">
+        <input type="text" />
+        <button>Login2</button>
+      </form>
+      <form v-on:submit.prevent="submitForm">
+        <input type="text" />
+        <button>Login3</button>
+      </form>
+
+    </section>
+  </body>
+</html>
