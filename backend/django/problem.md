@@ -33,7 +33,7 @@
 ## API類( `API`)
 ### 1.django-rest-swagger產生頁面錯誤(swagger_templateSyntaxError)
 - 錯誤訊息:
-    ![django_api_problem_1swagger_templateSyntaxError](../img/\django_api_problem_1_swagger_templateSyntaxError.png)
+    ![django_api_problem_1swagger_templateSyntaxError](../img/django_api_problem_1_swagger_templateSyntaxError.png)
 
 - 原因 : 版本問題(django)
 - 解決方式
