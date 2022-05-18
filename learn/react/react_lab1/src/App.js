@@ -32,6 +32,13 @@ class App extends React.Component {
     });
   };
   render() {
+    const style = {
+      backgroundColor: "yellow",
+      font: "inherit",
+      border: "2px solid red",
+      padding: "4px",
+      cursor: "pointer",
+    };
     return (
       <div className="App">
         <h1>{this.state.title}</h1>
@@ -39,8 +46,10 @@ class App extends React.Component {
           clickCallback={this.titleChangeListener}
           name={this.state.title}
         ></Banner>
-
-        <button onClick={() => this.changeNameHandler("Iron Man")}>
+        <button
+          style={style}
+          onClick={() => this.changeNameHandler("Iron Man")}
+        >
           Change
         </button>
         <Person

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./Person.css";
 const Person = (props) => {
   const [stateString, changeString] = useState({
     publisher: "Marvel Studio",
@@ -15,7 +15,7 @@ const Person = (props) => {
     });
   };
   return (
-    <div>
+    <div className="Person">
       <h1>{stateString.publisher}</h1>
       <button onClick={switchVenderHandler}>Change!</button>
       <button onClick={showStatus}>show status</button>
