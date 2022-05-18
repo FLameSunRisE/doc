@@ -12,18 +12,16 @@ class App extends React.Component {
       { name: "Kevin", age: 54 },
     ],
   };
-  changeNameHandler() {
+  changeNameHandler = () => {
     console.log("button clicked!!");
-    //this.state.persons[0].name = "Captain America"
-    this.setState({
-      persons: [
-        { name: "Captain America", age: 38 },
-        { name: "Thor", age: 37 },
-        { name: "Iron Man", age: 35 },
-        { name: "Hawk", age: 50 },
-      ],
-    });
-  }
+    this.state.persons[0].name = "Captain America";
+    // this.setState({
+    //   persons: [{ name: "Captain America", age: 38 },
+    //   { name: "Thor", age: 37 },
+    //   { name: "Iron Man", age: 35 },
+    //   { name: "Hawk", age: 50 }]
+    // })
+  };
   render() {
     return (
       <div className="App">
