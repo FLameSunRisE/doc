@@ -1,16 +1,17 @@
 [[_TOC_]]
 - [開發經驗](#開發經驗)
   - [資料庫操作類( `DB`)](#資料庫操作類-db)
-    - [django如何刪除Table並重新初始化:](#django如何刪除table並重新初始化)
+    - [1. django如何刪除Table並重新初始化:](#1-django如何刪除table並重新初始化)
   - [API類( `API`)](#api類-api)
-    - [1.django-rest-swagger產生頁面錯誤(swagger_templateSyntaxError)](#1django-rest-swagger產生頁面錯誤swagger_templatesyntaxerror)
+    - [1.  Django REST framework swagger整合](#1--django-rest-framework-swagger整合)
+    - [2. django-rest-swagger產生頁面錯誤(swagger_templateSyntaxError)](#2-django-rest-swagger產生頁面錯誤swagger_templatesyntaxerror)
   - [Model操作](#model操作)
 
 
 # 開發經驗
 ## 資料庫操作類( `DB`)
 
-### django如何刪除Table並重新初始化:
+### 1. django如何刪除Table並重新初始化:
 
 - 步驟:
     - 刪除db中對應的表 (mysql)
@@ -31,7 +32,39 @@
 - ###### tags: `DB` `Model` `Django` `makemigrations`
 
 ## API類( `API`)
-### 1.django-rest-swagger產生頁面錯誤(swagger_templateSyntaxError)
+
+### 1.  Django REST framework swagger整合
+- 步驟:
+    - Installation
+      ```$ pip install django-rest-swagger```
+    - Add 'rest_framework_swagger' to INSTALLED_APPS in Django settings.
+      - file : settings.py
+      ```py
+          INSTALLED_APPS = [
+              ...
+              'rest_framework_swagger',
+              ...
+          ]
+      ```
+    - 更新url
+        - file : urls.py
+          - note: 官網文件的```django.conf.urls```需改成```django.urls```，並使用path
+            ```py
+                from django.urls import path
+                from rest_framework_swagger.views import get_swagger_view
+
+                schema_view = get_swagger_view(title='Pastebin API')
+
+                urlpatterns = [
+                    path(r'^$', schema_view)
+                ]
+            ```
+            ![django_api_problem_1_django_swagger](../img/django_api_problem_1_django_swagger.png)
+- Ref : [Django REST Swagger
+](https://django-rest-swagger.readthedocs.io/en/latest/)
+- ###### tags: `API` `Swagger` `Django`
+
+### 2. django-rest-swagger產生頁面錯誤(swagger_templateSyntaxError)
 - 錯誤訊息:
     ![django_api_problem_1swagger_templateSyntaxError](../img/django_api_problem_1_swagger_templateSyntaxError.png)
 
