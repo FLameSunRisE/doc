@@ -35,7 +35,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>{this.state.title}</h1>
-        <Banner clickCallback={this.titleChangeListener}></Banner>
+        <Banner
+          clickCallback={this.titleChangeListener}
+          name={this.state.title}
+        ></Banner>
+
         <button onClick={() => this.changeNameHandler("Iron Man")}>
           Change
         </button>
