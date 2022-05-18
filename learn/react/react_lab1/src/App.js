@@ -28,6 +28,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <button onClick={() => this.changeNameHandler("Iron Man")}>
+          Change
+        </button>
         <button onClick={this.changeNameHandler.bind(this, "Iron Man")}>
           Change
         </button>
