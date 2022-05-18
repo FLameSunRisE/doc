@@ -1,14 +1,15 @@
 import "./App.css";
 import React from "react";
 import Dashboard from "./components/Dashboard.js";
-import Banner from "./components/Banner.js";
 import Person from "./Person/Person";
 import Pet from "./Pet/Pet";
+import Banner from "./components/Banner";
 class App extends React.Component {
   titleChangeListener = (event) => {
     this.setState({ title: event.target.value });
   };
   state = {
+    //2
     persons: [
       { name: "Mark", age: 44 },
       { name: "James", age: 34 },
@@ -16,25 +17,27 @@ class App extends React.Component {
       { name: "Kevin", age: 54 },
     ],
     teamMax: 10,
-    showPersons: true,
+    title: "hello react",
+    showPersons: false,
   };
+  toggleDisplayHandler = () => {
+    console.log(`current state=${this.state.showPersons}, will change`);
+    const doesShow = this.state.showPersons;
+    this.setState({ showPersons: !doesShow });
+  };
+  //changeNameHandler(){
+  //changeNameHandler = function () {
   changeNameHandler = (leaderName) => {
     console.log("button clicked!!!!!");
     //this.state.persons[0].name = "Captain America"
     this.setState({
-      //2
       persons: [
         { name: leaderName, age: 38 },
         { name: "Thor", age: 37 },
         { name: "Iron Man", age: 35 },
         { name: "Hawk", age: 50 },
       ],
-      title: "hello react",
     });
-  };
-  toggleDisplayHandler = () => {
-    const doesShow = this.state.showPersons;
-    this.setState({ showPersons: !doesShow });
   };
   render() {
     const style = {
@@ -44,9 +47,40 @@ class App extends React.Component {
       padding: "4px",
       cursor: "pointer",
     };
+    // add this...
+    let persons = null;
+    if (this.state.showPersons === true) {
+      persons = (
+        <div>
+          <Person
+            clickCallback={this.changeNameHandler.bind(this, "Bat Man")}
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+          />
+          <Pet name="king" specie="cat" />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+          />
+          <Pet name="oven" specie="dog" />
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+          />
+          <Person
+            name={this.state.persons[3].name}
+            age={this.state.persons[3].age}
+          />
+        </div>
+      );
+    }
     return (
       <div className="App">
         <h1>{this.state.title}</h1>
+        <button style={style} onClick={() => this.toggleDisplayHandler()}>
+          Show/Hide
+        </button>
+        <br />
         <Banner
           clickCallback={this.titleChangeListener}
           name={this.state.title}
@@ -57,33 +91,7 @@ class App extends React.Component {
         >
           Change
         </button>
-        <button style={style} onClick={() => this.toggleDisplayHandler()}>
-          Show/Hide
-        </button>
-        <br />
-        {this.state.showPersons === true ? (
-          <div>
-            <Person
-              clickCallback={this.changeNameHandler.bind(this, "Bat Man")}
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age}
-            />
-            <Pet name="king" specie="cat" />
-            <Person
-              name={this.state.persons[1].name}
-              age={this.state.persons[1].age}
-            />
-            <Pet name="oven" specie="dog" />
-            <Person
-              name={this.state.persons[2].name}
-              age={this.state.persons[2].age}
-            />
-            <Person
-              name={this.state.persons[3].name}
-              age={this.state.persons[3].age}
-            />
-          </div>
-        ) : null}
+        {persons}
       </div>
     );
   }
