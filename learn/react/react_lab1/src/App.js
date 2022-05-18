@@ -13,7 +13,7 @@ class App extends React.Component {
     ],
   };
   changeNameHandler = () => {
-    console.log("button clicked!!!");
+    console.log("button clicked!!!!!");
     //this.state.persons[0].name = "Captain America"
     this.setState({
       persons: [
