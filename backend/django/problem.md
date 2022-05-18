@@ -1,11 +1,13 @@
 [[_TOC_]]
 - [開發經驗](#開發經驗)
   - [資料庫操作類( `DB`)](#資料庫操作類-db)
+    - [1.django如何刪除Table並重新初始化](#1django如何刪除table並重新初始化)
   - [API類( `API`)](#api類-api)
+    - [1.django-rest-swagger產生頁面錯誤(swagger_templateSyntaxError)](#1django-rest-swagger產生頁面錯誤swagger_templatesyntaxerror)
   - [Model操作](#model操作)
 # 開發經驗
 ## 資料庫操作類( `DB`)
-1. django如何刪除Table並重新初始化
+### 1.django如何刪除Table並重新初始化
     - 步驟:
         - 刪除db中對應的表 (mysql)
 
@@ -27,7 +29,7 @@
     - ###### tags: `DB` `Model` `Django` `makemigrations`
 
 ## API類( `API`)
-1. django-rest-swagger產生頁面錯誤(swagger_templateSyntaxError)
+### 1.django-rest-swagger產生頁面錯誤(swagger_templateSyntaxError)
     - 錯誤訊息:
         ![django_api_problem_1swagger_templateSyntaxError](../img/D:\GitHub\doc\backend\img\django_api_problem_1_swagger_templateSyntaxError.png)
 
