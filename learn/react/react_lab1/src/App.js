@@ -1,9 +1,13 @@
 import "./App.css";
 import React from "react";
 import Dashboard from "./components/Dashboard.js";
+import Banner from "./components/Banner.js";
 import Person from "./Person/Person";
 import Pet from "./Pet/Pet";
 class App extends React.Component {
+  titleChangeListener = (event) => {
+    this.setState({ title: event.target.value });
+  };
   state = {
     persons: [
       { name: "Mark", age: 44 },
@@ -17,21 +21,22 @@ class App extends React.Component {
     console.log("button clicked!!!!!");
     //this.state.persons[0].name = "Captain America"
     this.setState({
+      //2
       persons: [
         { name: leaderName, age: 38 },
         { name: "Thor", age: 37 },
         { name: "Iron Man", age: 35 },
         { name: "Hawk", age: 50 },
       ],
+      title: "hello react",
     });
   };
   render() {
     return (
       <div className="App">
+        <h1>{this.state.title}</h1>
+        <Banner clickCallback={this.titleChangeListener}></Banner>
         <button onClick={() => this.changeNameHandler("Iron Man")}>
-          Change
-        </button>
-        <button onClick={this.changeNameHandler.bind(this, "Iron Man")}>
           Change
         </button>
         <Person
