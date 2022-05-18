@@ -9,7 +9,10 @@ const Person = (props) => {
     console.log(stateString);
   };
   const switchVenderHandler = () => {
-    changeString({ publisher: "DC Comics" });
+    changeString({
+      publisher: "DC Comics",
+      studio: stateString.studio,
+    });
   };
   return (
     <div>
