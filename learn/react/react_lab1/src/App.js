@@ -11,6 +11,7 @@ class App extends React.Component {
       { name: "Tim", age: 49 },
       { name: "Kevin", age: 54 },
     ],
+    teamMax: 10,
   };
   changeNameHandler = () => {
     console.log("button clicked!!!!!");
