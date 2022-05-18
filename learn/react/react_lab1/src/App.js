@@ -10,7 +10,7 @@ function App() {
     //React.createElement('div',null,"h1","Hi, this is react programming")
     React.createElement(
       "div",
-      null,
+      { className: "App" },
       React.createElement("h1", null, "Hi"),
       React.createElement("h1", null, "Hi I am Mark")
     )
