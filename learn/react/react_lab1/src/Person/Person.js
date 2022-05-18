@@ -19,7 +19,7 @@ const Person = (props) => {
       <h1>{stateString.publisher}</h1>
       <button onClick={switchVenderHandler}>Change!</button>
       <button onClick={showStatus}>show status</button>
-      <p>
+      <p onClick={props.clickCallback}>
         <em style={{ color: "red" }}>{props.children}</em>::I am {props.name}, I
         am {props.age} years old, I am the {Math.floor(Math.random() * 10)}th
         generation

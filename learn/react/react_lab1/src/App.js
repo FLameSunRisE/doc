@@ -13,12 +13,12 @@ class App extends React.Component {
     ],
     teamMax: 10,
   };
-  changeNameHandler = () => {
+  changeNameHandler = (leaderName) => {
     console.log("button clicked!!!!!");
     //this.state.persons[0].name = "Captain America"
     this.setState({
       persons: [
-        { name: "Captain America", age: 38 },
+        { name: leaderName, age: 38 },
         { name: "Thor", age: 37 },
         { name: "Iron Man", age: 35 },
         { name: "Hawk", age: 50 },
@@ -28,8 +28,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <button onClick={this.changeNameHandler}>Change</button>
+        <button onClick={this.changeNameHandler.bind(this, "Iron Man")}>
+          Change
+        </button>
         <Person
+          clickCallback={this.changeNameHandler.bind(this, "Bat Man")}
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
         />
