@@ -1,5 +1,6 @@
 package com.uuu.fullstack.BackendLab1.beans;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,10 +16,13 @@ public class Project {
     private String projectName;
     private String projectIdentifier;
     private String description;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date updateAt;
 
     @PrePersist
