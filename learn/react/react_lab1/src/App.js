@@ -39,6 +39,11 @@ class App extends React.Component {
       ],
     });
   };
+  deletePerson = (index) => {
+    const p = [...this.state.persons];
+    p.splice(index, 1);
+    this.setState({ persons: p });
+  };
   render() {
     const style = {
       backgroundColor: "yellow",
@@ -52,31 +57,30 @@ class App extends React.Component {
     if (this.state.showPersons === true) {
       persons = (
         <div>
-          <Person
-            clickCallback={this.changeNameHandler.bind(this, "Bat Man")}
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Pet name="king" specie="cat" />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-          />
-          <Pet name="oven" specie="dog" />
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-          />
-          <Person
-            name={this.state.persons[3].name}
-            age={this.state.persons[3].age}
-          />
+          {this.state.persons.map((p, index) => (
+            <Person
+              clickCallback={() => this.deletePerson(index)}
+              key={p.name}
+              name={p.name}
+              age={p.age}
+            />
+          ))}
         </div>
       );
+      style.backgroundColor = "red";
+      style.color = "black";
+    }
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("blue");
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold");
     }
     return (
       <div className="App">
-        <h1>{this.state.title}</h1>
+        <h1 className={classes}>{this.state.title}</h1>
+
         <button style={style} onClick={() => this.toggleDisplayHandler()}>
           Show/Hide
         </button>
