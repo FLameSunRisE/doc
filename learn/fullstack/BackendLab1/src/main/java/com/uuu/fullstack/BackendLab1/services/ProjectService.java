@@ -27,4 +27,13 @@ public class ProjectService {
             throw new ProjectIdException("Project ID:" + p.getProjectIdentifier().toUpperCase());
         }
     }
+
+    public Iterable<Project> findAllProject() {
+        return repository.findAll();
+    }
+
+    public Project findProjectByIdentifier(String projectID) {
+        Project project = repository.findByProjectIdentifier(projectID);
+        return project;
+    }
 }
