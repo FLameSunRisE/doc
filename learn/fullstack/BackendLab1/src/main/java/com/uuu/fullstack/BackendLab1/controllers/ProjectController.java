@@ -1,5 +1,7 @@
 package com.uuu.fullstack.BackendLab1.controllers;
 
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import com.uuu.fullstack.BackendLab1.beans.Project;
@@ -27,12 +29,13 @@ public class ProjectController {
     public ResponseEntity<?> createNewProject(@Valid @RequestBody Project p,
             BindingResult result) {
         if (result.hasErrors()) {
-
-            for (FieldError error : result.getFieldErrors()) {
-                log.info("field:{}, got error:{}", error.getField(), error.getDefaultMessage());
+            Map<String, String> errorMap = new HashMap<>();
+            for (FieldError e : result.getFieldErrors()) {
+                errorMap.put(e.getField(), e.getDefaultMessage());
             }
+
             // should not proceed
-            return new ResponseEntity<>(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
         }
         Project newProject = projectService.saveOrUpdateProject(p);
         // return new ResponseEntity<>(newProject, HttpStatus.OK);
