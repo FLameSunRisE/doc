@@ -1,7 +1,7 @@
-import "./App.css";
-import DashBoard from "./components/DashBoard";
-import Header from "./components/Layout/Header";
-
+import './App.css';
+import DashBoard from './components/DashBoard';
+import Header from './components/Layout/Header';
+import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <div className="App">
