@@ -1,11 +1,14 @@
 package com.uuu.fullstack.BackendLab1.controllers;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import com.uuu.fullstack.BackendLab1.beans.Project;
+import com.uuu.fullstack.BackendLab1.handler.MapValidationError;
 import com.uuu.fullstack.BackendLab1.services.ProjectService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +31,16 @@ public class ProjectController {
     @PostMapping("")
     public ResponseEntity<?> createNewProject(@Valid @RequestBody Project p,
             BindingResult result) {
+        ResponseEntity<Map<String, String>> errorMap = MapValidationError.getMapResponseEntity(p, result);
+        if (errorMap != null) {
+            return errorMap;
+        }
+        Project newProject = projectService.saveOrUpdateProject(p);
+        // return new ResponseEntity<>(newProject, HttpStatus.OK);
+        return new ResponseEntity<>(newProject, HttpStatus.CREATED);
+    }
+
+    private ResponseEntity<Map<String, String>> getMapResponseEntity(BindingResult result) {
         if (result.hasErrors()) {
             Map<String, String> errorMap = new HashMap<>();
             for (FieldError e : result.getFieldErrors()) {
@@ -37,8 +50,6 @@ public class ProjectController {
             // should not proceed
             return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
         }
-        Project newProject = projectService.saveOrUpdateProject(p);
-        // return new ResponseEntity<>(newProject, HttpStatus.OK);
-        return new ResponseEntity<>(newProject, HttpStatus.CREATED);
+        return null;
     }
 }
