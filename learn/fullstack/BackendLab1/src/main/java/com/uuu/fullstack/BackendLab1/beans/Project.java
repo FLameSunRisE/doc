@@ -19,6 +19,7 @@ public class Project {
     @NotBlank(message = "project name is required")
     private String projectName;
     @NotBlank(message = "project identifier is required")
+    @Size(min = 6, max = 16, message = "identifier should between 6 to 16 characters")
     private String projectIdentifier;
     @NotBlank(message = "description is required")
     private String description;
