@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MapValidationError {
     public static ResponseEntity<Map<String, String>> getMapResponseEntity(Project p, BindingResult result) {
-        Logger.info("Project{}", p);
+        // Logger.info("Project{}", p);
         if (result.hasErrors()) {
             Map<String, String> errorMap = new HashMap<>();
             for (FieldError e : result.getFieldErrors()) {
