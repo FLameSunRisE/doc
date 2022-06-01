@@ -92,18 +92,116 @@
 
 ### Copy
 #### 深拷貝 (Deep copy) 
-- 說明:
-- 圖示:
+
 
 
 #### 淺拷貝 (Shallow copy)
+- 說明:
+  - 有任何一層的資料地址相同，背後指向的值相同，兩個物件的操作會互相影響
+- 範例:
+    1. 直接複製
+       - 說明: original與clone會互相影響
+         ```js
+         const originalData = {
+         firstLayerNum: 10,
+         obj: {
+             secondLayerNum: 100,
+         },
+         };
+         const clonedData = originalData;
 
+         clonedData.firstLayerNum = 20;
+         clonedData.obj.secondLayerNum = 200;
 
+         console.log(originalData.firstLayerNum);
+         // 20 => 第一層有被 clonedData 影響而改變
+         console.log(originalData.obj.secondLayerNum);
+         // 200 => 第二層有被 clonedData 影響而改變
+         ```
 
+    2. 複製第一層物件
+        - 說明
+            ```js
+            function shadowCopy(originalObj) {
+            let clonedObj = {};
+            for (const key in originalObj) {
+                clonedObj[key] = originalObj[key];
+            }
+            return clonedObj;
+            }
+
+            const originalData = {
+            firstLayerNum: 10,
+            obj: {
+                secondLayerNum: 100,
+            },
+            };
+            const clonedData = shadowCopy(originalData);
+
+            clonedData.firstLayerNum = 20;
+            clonedData.obj.secondLayerNum = 200;
+
+            console.log(originalData.firstLayerNum);
+            // 10 => 第一層沒有被 clonedData 影響
+            console.log(originalData.obj.secondLayerNum);
+            // 200 => 第二層被 clonedData 影響而改變
+            ```
+    3. Object.assign
+        - 說明
+            ```js
+            const originalData = {
+            firstLayerNum: 10,
+            obj: {
+                secondLayerNum: 100,
+            },
+            };
+            const clonedData = Object.assign({}, originalData);
+
+            clonedData.firstLayerNum = 20;
+            clonedData.obj.secondLayerNum = 200;
+
+            console.log(originalData.firstLayerNum);
+            // 10 => 第一層沒有被 clonedData 影響
+            console.log(originalData.obj.secondLayerNum);
+            // 200 => 第二層被 clonedData 影響而改變     
+            ```
+
+    4. Spread operator
+        ```js
+        const originalData = {
+        firstLayerNum: 10,
+        obj: {
+            secondLayerNum: 100,
+        },
+        };
+        const clonedData = { ...originalData };
+
+        clonedData.firstLayerNum = 20;
+        clonedData.obj.secondLayerNum = 200;
+
+        console.log(originalData.firstLayerNum);
+        // 10 => 第一層沒有被 clonedData 影響
+        console.log(originalData.obj.secondLayerNum);
+        // 200 => 第二層被 clonedData 影響而改變
+        ```
+
+    5. 部分 Array 方法，如：slice()、from() 等
+        ```js
+        const originalData = [10, { secondLayerNum: 100 }];
+        const clonedData = originalData.slice();
+
+        clonedData[0] = 20;
+        clonedData[1].secondLayerNum = 200;
+
+        console.log(originalData[0]);
+        // 10 => 第一層沒有被 clonedData 影響
+        console.log(originalData[1].secondLayerNum);
+        // 200 => 第二層被 clonedData 影響而改變
+        ```
 
 
 ## 參考資料
 ### 變數
 - [JS 變數傳遞探討：pass by value 、 pass by reference 還是 pass by sharing？](https://www.programfarmer.com/articles/javaScript/javascript-pass-by-value-pass-by-reference-pass-by-sharing)
 ### 複製
-- 
+- [JS 中的淺拷貝 (Shallow copy) 與深拷貝 (Deep copy) 原理與實作](https://www.programfarmer.com/articles/javaScript/javascript-shallow-copy-deep-copy)
