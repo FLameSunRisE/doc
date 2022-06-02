@@ -92,8 +92,12 @@
 
 ### Copy
 #### 深拷貝 (Deep copy) 
-
-
+- 說明:
+  - 是兩個完全獨立，每一層的資料地址都不同，相互不影響的深層物件
+- 範例:
+    1. JSON.stringify/parse
+    2. Lodash cloneDeep()
+    3. Recursive deepCopyFunction
 
 #### 淺拷貝 (Shallow copy)
 - 說明:
