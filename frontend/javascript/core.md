@@ -91,6 +91,9 @@
     ```
 
 ### Copy
+
+![copy](/src/img/frontend/javascript/core_copy_sumary.png)
+
 #### 深拷貝 (Deep copy) 
 - 說明:
   - 是兩個完全獨立，每一層的資料地址都不同，相互不影響的深層物件
