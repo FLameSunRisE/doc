@@ -7,6 +7,9 @@
     - [控制反轉 (IOC)與依賴注入 (DI)關係](#控制反轉-ioc與依賴注入-di關係)
     - [控制反轉 (IOC)](#控制反轉-ioc)
     - [依賴注入 (DI)](#依賴注入-di)
+    - [Bean](#bean)
+      - [介紹](#介紹)
+      - [如何配置](#如何配置)
     - [資料來源:](#資料來源)
 
 ## 核心概念
@@ -82,16 +85,30 @@ Spring Test : 提供了對 JUnit 和 TestNG 測試的支持。 -->
   - 設計模式(實現IOC的手段)
 
 ### 控制反轉 (IOC)
-   - 說明:
+  - 說明:
      - 是一種物件導向程式中的設計原則，用來降低code之間的耦合度
      - 基本理念: 借助第三方實現物件之間具有依賴關係的解耦
        - 以Spring為例子就是透過BeanFactory(Interface)為spring Ioc容器中的核心接口
        - Object之間的關係由容器建立與維護，將開發者做的事給容器做，就是IOC
-    - 圖示:
-      - IOC前
-        - ![before IOC](/src/img/backend/java/sprinng/java_spring_proper_1_beforeIoc.jpg)
-      - ICO後
-        - ![after IOC](/src/img/backend/java/sprinng/java_spring_proper_1_afterIoc.jpg)
+
+  - 優點:
+    - 最小化applaction的code量
+    - 使application易於測試，因為它不需要單元測試用例中的任何單例或JNDI查找機制
+    - 以最小的影響和侵入機制促進解耦合
+    - 支持及時實例化和延遲加載服務
+
+  - 圖示
+    - IOC前
+        ![](/src/img/backend/java/sprinng/java_spring_proper_1_afterIoc.jpg)
+      - ![before IOC](/src/img/backend/java/sprinng/java_spring_proper_1_beforeIoc.jpg)
+    - ICO後
+      - ![after IOC](/src/img/backend/java/sprinng/java_spring_proper_1_afterIoc.jpg)
+
+  - 舉例:
+    - BeanFactory
+      - 包含bean集合的工廠，會在被要求時implement bean
+    - ApplicationContext
+      - ApplicationContext拓展了BeanFactory接口
     
 
 ### 依賴注入 (DI)
@@ -128,6 +145,16 @@ Spring Test : 提供了對 JUnit 和 TestNG 測試的支持。 -->
         }
         ```
 
+### Bean
+
+#### 介紹
+- 構成application主幹的object
+- bean由Spring IoC容器管理
+- 由spring IoC容器實例化、配置、裝配、管理
+- Bean是基於用戶提供給容器的配置所建立的
+
+#### 如何配置
+- xml
 
 ### 資料來源:
 - 核心概念

@@ -1,7 +1,7 @@
 # Spring Security
 
 - [Spring Security](#spring-security)
-  - [## 專有名詞說明](#-專有名詞說明)
+  - [專有名詞說明](#專有名詞說明)
     - [JWT (JSON Web Token)](#jwt-json-web-token)
     - [OAuth](#oauth)
   - [Reference](#reference)
@@ -18,7 +18,7 @@
         - 比較:
         
         | Compare        | JWT                               | Token                                     |
-        |----------------|-----------------------------------|-------------------------------------------|
+        | -------------- | --------------------------------- | ----------------------------------------- |
         | 如何驗證使用者 | 直接把使用者資料存放在「Token」中 | 需要呼叫資料庫並且比對這一個 Token 是誰的 |
 
     - Token取代了原先常使用的Session 
@@ -68,13 +68,6 @@
         - 由於 ```secret``` 這個密碼是儲存在伺服端的，所以沒有人知道（除非暴力破解
         - 任何人都可以修改 JWT 的內容，但是當他簽發的時候並不知道密碼，所以會有不對的簽名，伺服端也就自然不會接受這個錯誤的 JWT。
 
-- Token 解決了什麼:
-  - 無狀態性:
-    - Token 本身是不帶資訊的且無狀態性的（Stateless），當伺服器接收到 Token 時，會主動去對應使用者的資料表，接著就能夠知道這個 Token 代表著哪個使用者，然****後抓出相關的資訊來使用。
-    - 注意 : Token 不可以被別人知道，否則別人就能夠擁有你的身份、偽造成你
-  - 安全性提高:
-    - 須主動提供 Token，也順帶解決了跨網域請求偽造攻擊
-
 ---
 
 ### OAuth
@@ -90,3 +83,16 @@
     - [以 JSON Web Token 替代傳統 Token](https://yami.io/jwt/)
   - OAuth
     - [OAuth 2.0 筆記 (1) 世界觀](https://blog.yorkxin.org/posts/oauth2-1-introduction.html)
+
+
+- 區分Overloading method?
+:::success
+:bulb: **方法參數列:**
+:::
+- Java class有幾個constructor?
+a. 0
+b. 1
+c. 2
+d. 3
+:::warning
+:bulb: **答案:1**
