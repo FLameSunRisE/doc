@@ -2,9 +2,10 @@
 jay的全端開發紀錄
 
 - [doc](#doc)
+- [學習紀錄](#學習紀錄)
   - [後端技術](#後端技術)
     - [Java](#java)
-      - [Spring ](#spring-)
+      - [Spring](#spring)
     - [Python](#python)
       - [Django](#django)
   - [前端技術](#前端技術)
@@ -17,16 +18,17 @@ jay的全端開發紀錄
   - [參考文件](#參考文件)
 
 ---
+# [學習紀錄](daily.md)
+---
+
 ## 後端技術
 ### [Java](backend/java/README.md)
-#### [Spring ](backend/java/spring/spring.md)
+#### [Spring](backend/java/spring/spring.md)
 
 --- 
 ### Python
 #### Django
 - [開發踩雷經驗](./backend/django/problem.md)
-<!-- ### Java -->
-<!-- #### Spring -->
 
 ---
 ## 前端技術
@@ -43,6 +45,7 @@ jay的全端開發紀錄
 
 ---
 ## Devops
+- [AzureDevops]( )
 - [Github CI/SD](./devops/github/README.md)
 
 ---
