@@ -32,7 +32,7 @@ jay的全端開發紀錄
 
 ##### [Maven](backend/java/spring/maven.md)
 
-- [為什麼 Maven 找不到要運行的 JUnit 測試](backend/java/spring/maven.md#為什麼-maven-找不到要運行的-junit-測試)
+- [為什麼Maven找不到需運行的JUnit測試](backend/java/spring/maven.md#為什麼-maven-找不到要運行的-junit-測試)
 
 --- 
 
