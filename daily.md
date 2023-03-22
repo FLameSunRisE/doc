@@ -21,7 +21,7 @@
 | 2023-01-TBD |        | [CICD](#CICD)                            | [Gitlab-runner](#)                                                                    |
 | 2023-01-21  | 實作   | [Backend Spring](./backend/java/spring/) | [Spring boot + thymeleaf ](./backend/java/spring/devlog.md#spring-boot-thymeleaf實作) |
 | 2023-03-21  | 理論   | [Backend Spring](./backend/java/spring/) | [Cucumber 介紹 ](./backend/java/spring/test/cucumber.md)                              |
-| 2023-03-22  | 演算法 | [Backend Spring](./backend/java/spring/) | [Moore voting algorithm](./backend/java/spring/)                                      |
+| 2023-03-22  | 演算法 | [Backend Spring](./algo/)                | [Moore voting algorithm](./algo//algo.md)                                             |
 | 2023-03-XX  | 理論   | [Backend Spring](./backend/java/spring/) | [XXXX](./backend/java/spring/)                                                        |
 
 ---
@@ -31,6 +31,7 @@
 | Date       | Category          | Title                                                                                                                       |
 | ---------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | 2023-01-20 | [Spring](#spring) | [Spring Security-WebSecurityConfigurerAdapter 棄用問題](backend/java/spring/devlog.md#websecurityconfigureradapter棄用問題) |
+| 2023-03-22 | [Maven](#Maven)   | [maven-下載檔案時無法下載](backend/java/spring/maven.md#maven-下載檔案時無法下載)                                           |
 
 ---
 
