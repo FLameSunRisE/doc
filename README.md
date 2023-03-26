@@ -18,11 +18,15 @@ jay 的全端開發紀錄
   - [Devops](#devops)
   - [Test](#test)
     - [UnitTest](#unittest)
+  - [Other](#other)
+    - [Latex教學](#latex教學)
   - [參考文件](#參考文件)
 
 ---
 
 # [學習紀錄](daily.md)
+
+將遇到的問題記錄在此[daily.md](./daily.md)中, 可以清楚的知道過程學了什麼又遇到了什麼問題
 
 ---
 
@@ -78,6 +82,12 @@ jay 的全端開發紀錄
 ## Test
 
 ### [UnitTest](./test/unittest/unittest.md)
+
+---
+
+## Other
+
+### [Latex教學](./other/LaTeX.md)
 
 ---
 
