@@ -4,8 +4,6 @@
   - [Schedule](#schedule)
   - [開發遇到的問題](#開發遇到的問題)
   - [TODO](#todo)
-      - [GitLab](#gitlab)
-        - [Gitlab-runner](#gitlab-runner)
 
 ## Schedule
 
@@ -22,11 +20,12 @@
 | 2023-01-21  | 實作     | [Backend Spring](./backend/java/spring/) | [Spring boot + thymeleaf](./backend/java/spring/devlog.md#spring-boot-thymeleaf實作)          |
 | 2023-03-21  | 理論     | [Backend Spring](./backend/java/spring/) | [Cucumber 介紹](./backend/java/spring/test/cucumber.md)                                       |
 | 2023-03-22  | 演算法   | [Backend Spring](./algo/)                | [Moore voting algorithm](./algo//algo.md)                                                     |
-| 2023-03-23  | 網站內容 | [Refactor](./refactiror/)                | [翻譯refactor.guru網站內容](./book/refactor.md)                                               |
+| 2023-03-23  | 網站內容 | [Refactor](./refactiror/)                | [翻譯 refactor.guru 網站內容](./book/refactor.md)                                             |
 | 2023-03-24  | 理論     | [Backend Spring](./backend/java/spring/) | [常見的依賴注入 (DI) 的方式](./backend/interview/SpringQuestion.md#q常見的依賴注入-di-的方式) |
+
 RESTful API
-| 2023-03-25  | 網路     | [API](./backend/api/api.md) | [RESTful API](./backend/api/api.md#restful-api---representational-state-transfer-表現層狀態轉移)                                                                |
-| 2023-03-XX  | 理論     | [Backend Spring](./backend/java/spring/) | [XXXX](./backend/java/spring/)                                                                |
+| 2023-03-25 | 網路 | [API](./backend/api/api.md) | [RESTful API](./backend/api/api.md#restful-api---representational-state-transfer-表現層狀態轉移) |
+| 2023-03-XX | 理論 | [Backend Spring](./backend/java/spring/) | [XXXX](./backend/java/spring/) |
 
 ---
 
@@ -36,11 +35,13 @@ RESTful API
 | ---------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | 2023-01-20 | [Spring](#spring) | [Spring Security-WebSecurityConfigurerAdapter 棄用問題](backend/java/spring/devlog.md#websecurityconfigureradapter棄用問題) |
 | 2023-03-22 | [Maven](#Maven)   | [maven-下載檔案時無法下載](backend/java/spring/maven.md#maven-下載檔案時無法下載)                                           |
+| 2023-03-27 | [Devops](#Azure)  | [azure board 如何快速新增 work items](devops/azure/azureDevops.md)                                                          |
 
 ---
 
 ## TODO
 
+<!--
 #### [GitLab](#gitlab)
 
 ##### Gitlab-runner
@@ -61,4 +62,4 @@ RESTful API
     `docker system prune`
 
   - remove 所有 image
-    `docker rmi $(docker images -a -q)`
+    `docker rmi $(docker images -a -q)` -->
