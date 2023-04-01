@@ -15,6 +15,8 @@ jay 的全端開發紀錄
     - [Vue](#vue)
     - [React](#react)
   - [Algo](#algo)
+    - [基本數學](#基本數學)
+    - [Array相關](#array相關)
   - [Devops](#devops)
   - [Test](#test)
     - [UnitTest](#unittest)
@@ -69,6 +71,10 @@ jay 的全端開發紀錄
 ---
 
 ## [Algo](./algo/algo.md)
+
+### [基本數學](./algo/algo.md#基本數學)
+
+### [Array相關](./algo/algo.md#array相關)
 
 ---
 

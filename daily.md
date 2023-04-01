@@ -20,11 +20,12 @@
 | 2023-01-TBD | Devops   | [CICD](#CICD)                                 | [Gitlab-runner](#)                                                                               |
 | 2023-01-21  | 實作     | [Backend Spring](./backend/java/spring/)      | [Spring boot + thymeleaf](./backend/java/spring/devlog.md#spring-boot-thymeleaf實作)             |
 | 2023-03-21  | 理論     | [Backend Spring](./backend/java/spring/)      | [Cucumber 介紹](./backend/java/spring/test/cucumber.md)                                          |
-| 2023-03-22  | 演算法   | [Backend Spring](./algo/)                     | [Moore voting algorithm](./algo//algo.md)                                                        |
+| 2023-03-22  | 演算法   | [Algo](./algo/)                               | [Moore voting algorithm](./algo//algo.md)                                                        |
 | 2023-03-23  | 網站內容 | [Refactor](./refactiror/)                     | [翻譯 refactor.guru 網站內容](./book/refactor.md)                                                |
 | 2023-03-24  | 理論     | [Backend Spring](./backend/java/spring/)      | [常見的依賴注入 (DI) 的方式](./backend/interview/SpringQuestion.md#q常見的依賴注入-di-的方式)    |
 | 2023-03-25  | 網路     | [API](./backend/api/api.md)                   | [RESTful API](./backend/api/api.md#restful-api---representational-state-transfer-表現層狀態轉移) |
-| 2023-03-XX  | 理論     | [MessageQueue](./backend/mq/message-queue.md) | [MessageQueue 介紹](./backend/mq/message-queue.md)                                               |
+| 2023-03-26  | 理論     | [MessageQueue](./backend/mq/message-queue.md) | [MessageQueue 介紹](./backend/mq/message-queue.md)                                               |
+| 2023-04-01  | 演算法   | [Algo](./algo/)                               | [Euclidean algorithm](./algo/algo.md#輾轉相除法歐幾里得算法)                                     |
 | 2023-03-XX  | 理論     | [Backend Spring](./backend/java/spring/)      | [XXXX](./backend/java/spring/)                                                                   |
 
 ---
