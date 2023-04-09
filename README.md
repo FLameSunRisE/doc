@@ -6,6 +6,7 @@ jay 的全端開發紀錄
 - [學習紀錄](#學習紀錄)
   - [後端技術](#後端技術)
     - [Java](#java)
+      - [Thread](#thread)
       - [Spring](#spring)
         - [Maven](#maven)
     - [Python](#python)
@@ -35,6 +36,8 @@ jay 的全端開發紀錄
 ## 後端技術
 
 ### [Java](backend/java/README.md)
+
+#### [Thread](backend/java/thread.md)
 
 #### [Spring](backend/java/spring/spring.md)
 
