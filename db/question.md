@@ -2,7 +2,8 @@
 
 - [Question](#question)
   - [Q.樂觀鎖和悲觀鎖是什麼](#q樂觀鎖和悲觀鎖是什麼)
-  - [定義](#定義)
+    - [定義](#定義)
+  - [Q.悲觀鎖是否會發生 dirty read](#q悲觀鎖是否會發生-dirty-read)
 
 ## Q.樂觀鎖和悲觀鎖是什麼
 
@@ -10,7 +11,7 @@
 
 - 樂觀鎖（Optimistic Lock）是另一種並發控制策略，核心理念是資料變動頻率低，因此允許多個 SQL 動作。使用版本控制實現，每次修改資料時會增加一個版本號，當事務訪問資料時，會比較版本號是否一致，以判斷資料是否被修改過。如果該資料在事務執行期間被修改，事務會檢測到並回滾操作。因此，在事務訪問資料時，不會將資料鎖定，只有在確定資料未被修改後才進行操作。
 
-## 定義
+### 定義
 
 - 悲觀鎖 —Pessimistic Lock
   - 核心理念: 認為 table 的 data 非常不安全
@@ -43,3 +44,27 @@
 
 - Ref
   - [理解資料庫『悲觀鎖』和『樂觀鎖』的觀念](https://medium.com/dean-lin/%E7%9C%9F%E6%AD%A3%E7%90%86%E8%A7%A3%E8%B3%87%E6%96%99%E5%BA%AB%E7%9A%84%E6%82%B2%E8%A7%80%E9%8E%96-vs-%E6%A8%82%E8%A7%80%E9%8E%96-2cabb858726d)
+
+## Q.悲觀鎖是否會發生 dirty read
+
+悲觀鎖通常不會發生 dirty read 的情況，因為當一個事務鎖定資料時，其他事務無法訪問或修改該資料，因此不會出現其他事務讀取到未提交的資料的情況。但悲觀鎖可能會導致阻塞的問題，因為其他事務需要等待該鎖釋放，才能進行訪問或修改資料。
+
+- 範例:
+  假設有兩個事務同時訪問同一個帳戶資料，其中一個事務正在修改該帳戶的餘額，而另一個事務試圖讀取該帳戶的餘額：
+
+```sql!
+-- 事務1
+BEGIN TRANSACTION;
+SELECT balance FROM account WHERE id = 123 FOR UPDATE;
+-- 進行餘額修改操作
+UPDATE account SET balance = balance - 100 WHERE id = 123;
+COMMIT;
+
+-- 事務2
+BEGIN TRANSACTION;
+SELECT balance FROM account WHERE id = 123 FOR UPDATE;
+-- 讀取餘額
+SELECT balance FROM account WHERE id = 123;
+COMMIT;
+
+```
