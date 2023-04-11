@@ -61,7 +61,7 @@
 | 2023-04-11 | [Database](./db/)                | [樂觀鎖和悲觀鎖是什麼](./db/question.md#q樂觀鎖和悲觀鎖是什麼)                                              |
 | 2023-04-11 | [Database](./db/)                | [悲觀鎖是否會發生 dirty read](./db/question.md#q悲觀鎖是否會發生-dirty-read)                                |
 | 2023-04-11 | [System](./system/)              | [分散式系統如何收集 log](./system/systemQuestion.md#q分散式系統如何收集-log)                                |
-| 2023-04-11 | [Spring](./backend/java/spring/) | [如何解決 Spring bean 的循環依賴](./backend/java/spring/springQuestion.md#q如何解決-spring-bean-的循環依賴) |
+| 2023-04-11 | [Spring](./backend/java/spring/) | [Spring的DI是如何做到的](./backend/java/spring/springQuestion.md#qspring的di是如何做到的) |
 
 ## TODO
 
