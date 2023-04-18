@@ -65,15 +65,17 @@
 
 ## 問題整理
 
-| Date       | Category                         | Title                                                                                                |
-| ---------- | -------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| 2023-03-28 | [ActiveMq](./backend/mq/)        | [MQ-使用 MQ 的場景](./backend/mq/mqQuestion.md#q1-使用-mq-的場景)                                    |
-| 2023-04-11 | [Database](./db/)                | [樂觀鎖和悲觀鎖是什麼](./db/question.md#q樂觀鎖和悲觀鎖是什麼)                                       |
-| 2023-04-11 | [Database](./db/)                | [悲觀鎖是否會發生 dirty read](./db/question.md#q悲觀鎖是否會發生-dirty-read)                         |
-| 2023-04-11 | [System](./system/)              | [分散式系統如何收集 log](./system/systemQuestion.md#q分散式系統如何收集-log)                         |
-| 2023-04-11 | [Spring](./backend/java/spring/) | [Spring 的 DI 是如何做到的](./backend/java/spring/springQuestion.md#qspring的di是如何做到的)         |
-| 2023-04-11 | [情境問題](./backend/interview)  | [第三方登入機制如何運作 oauth](./backend/interview/situationQuestion.md#第三方登入機制如何運作oauth) |
-| 2023-03-28 | [MQ](./backend/mq/)              | [MQ-為何要選用 Kafka,它的優點是?](./backend/mq/mqQuestion.md#q2-為何要選用-kafka它的優點是)                                |
+| Date       | Category                           | Title                                                                                                |
+| ---------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 2023-03-28 | [ActiveMq](./backend/mq/)          | [MQ-使用 MQ 的場景](./backend/mq/mqQuestion.md#q1-使用-mq-的場景)                                    |
+| 2023-04-11 | [Database](./db/)                  | [樂觀鎖和悲觀鎖是什麼](./db/question.md#q樂觀鎖和悲觀鎖是什麼)                                       |
+| 2023-04-11 | [Database](./db/)                  | [悲觀鎖是否會發生 dirty read](./db/question.md#q悲觀鎖是否會發生-dirty-read)                         |
+| 2023-04-11 | [System](./system/)                | [分散式系統如何收集 log](./system/systemQuestion.md#q分散式系統如何收集-log)                         |
+| 2023-04-11 | [Spring](./backend/java/spring/)   | [Spring 的 DI 是如何做到的](./backend/java/spring/springQuestion.md#qspring的di是如何做到的)         |
+| 2023-04-11 | [情境問題](./backend/interview)    | [第三方登入機制如何運作 oauth](./backend/interview/situationQuestion.md#第三方登入機制如何運作oauth) |
+| 2023-03-28 | [MQ](./backend/mq/)                | [MQ-為何要選用 Kafka,它的優點是?](./backend/mq/mqQuestion.md#q2-為何要選用-kafka它的優點是)          |
+| 2023-04-18 | [Thread](./backend/java/thread.md) | [Thread-concurrency(併發)](./backend/java/thread.md#q-thread-concurrency併發)                        |
+| 2023-04-18 | [Thread](./backend/java/thread.md) | [Thread 中如何使用 Lock](./backend/java/thread.md#q-thread-中如何使用-lock)                          |
 
 ## TODO
 
