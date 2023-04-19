@@ -76,6 +76,7 @@
 | 2023-03-28 | [MQ](./backend/mq/)                | [MQ-為何要選用 Kafka,它的優點是?](./backend/mq/mqQuestion.md#q2-為何要選用-kafka它的優點是)          |
 | 2023-04-18 | [Thread](./backend/java/thread.md) | [Thread-concurrency(併發)](./backend/java/thread.md#q-thread-concurrency併發)                        |
 | 2023-04-18 | [Thread](./backend/java/thread.md) | [Thread 中如何使用 Lock](./backend/java/thread.md#q-thread-中如何使用-lock)                          |
+| 2023-04-19 | [Database](./db/)                  | [SQL 如何優化](./db/question.md#qsql-如何優化)                                                       |
 
 ## TODO
 

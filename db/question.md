@@ -4,6 +4,7 @@
   - [Q.樂觀鎖和悲觀鎖是什麼](#q樂觀鎖和悲觀鎖是什麼)
     - [定義](#定義)
   - [Q.悲觀鎖是否會發生 dirty read](#q悲觀鎖是否會發生-dirty-read)
+  - [Q.SQL 如何優化](#qsql-如何優化)
 
 ## Q.樂觀鎖和悲觀鎖是什麼
 
@@ -67,4 +68,82 @@ SELECT balance FROM account WHERE id = 123 FOR UPDATE;
 SELECT balance FROM account WHERE id = 123;
 COMMIT;
 
+```
+
+## Q.SQL 如何優化
+
+- 使用索引
+  索引可以大大提高數據庫的查詢速度。在 MySQL 中，可以使用 CREATE INDEX 命令添加索引。請確保索引建立在最常被查詢的欄位上，並且使用適當的索引類型。
+
+  - Example
+
+    - 假設有一個表 orders，存儲了訂單信息，其中包括 id、user_id、product_id 和 order_time 等欄位，現在需要優化以下查詢語句：
+
+    ```sql
+    SELECT * FROM orders WHERE user_id = 1001 AND order_time > '2022-01-01';
+    ```
+
+    - 建立一個複合索引，包括 user_id 和 order_time 兩個欄位。這樣，MySQL 就可以通過這個索引快速地找到符合條件的數據，而不必進行全表掃描。
+
+    ```sql
+    CREATE INDEX idx_user_time ON orders (user_id, order_time);
+    ```
+
+- 適當地使用 JOIN
+  JOIN 操作是 SQL 中很常用的操作，但是如果 JOIN 操作過多或不適當，會大大降低數據庫的效能。請確保 JOIN 操作使用適當的 JOIN 類型，並且限制 JOIN 操作的數量。
+
+- 避免使用 SELECT *
+  使用 SELECT*會讓 MySQL 從磁盤中讀取整個表的所有欄位，這會消耗大量的資源。請盡量只查詢需要的欄位，並且使用 LIMIT 語句限制查詢結果的數量。
+
+- 使用分區表
+  MySQL 支持分區表，可以將大表分成多個小表，進一步提高數據庫的查詢速度。 - Example:
+  假設有一個表 logs，存儲了每天的日誌信息，其中包括 id、log_time、level 和 message 等欄位。現在需要查詢某一個月的日誌信息，查詢語句如下： - 分區方式 - 建立分區表:
+
+  ```sql
+      SELECT * FROM logs WHERE log_time >= '2022-01-01' AND log_time < '2022-02-01';
+  ```
+
+- 將數據插入到分區表中
+
+  ```sql
+      CREATE TABLE logs_part (
+        id INT NOT NULL AUTO_INCREMENT,
+        log_time DATETIME NOT NULL,
+        level VARCHAR(10) NOT NULL,
+        message VARCHAR(255) NOT NULL,
+        PRIMARY KEY (id, log_time)
+      ) ENGINE=InnoDB
+      PARTITION BY RANGE(TO_DAYS(log_time)) (
+        PARTITION p1 VALUES LESS THAN (TO_DAYS('2022-02-01')),
+        PARTITION p2 VALUES LESS THAN (TO_DAYS('2022-03-01')),
+        PARTITION p3 VALUES LESS THAN (TO_DAYS('2022-04-01')),
+        PARTITION p4 VALUES LESS THAN (TO_DAYS('2022-05-01'))
+      );
+  ```
+
+- 使用 EXPLAIN 命令
+  使用 EXPLAIN 命令可以查詢 SQL 查詢的執行計劃，從而找到 SQL 語句的瓶頸，進一步優化 SQL 語句。 - Example:假設有一個表 orders，存儲了訂單信息，其中包括 id、user_id、product_id 和 order_time 等欄位，現在需要優化以下查詢語句：
+
+  - 如何操作:
+
+    1. 透過`EXPLAIN`找出 sql 查詢頻頸
+
+    ```sql
+        EXPLAIN SELECT * FROM orders WHERE user_id = 1001 AND order_time > '2022-01-01';
+    ```
+
+    2. 分析執行計劃，找到瓶頸
+
+       - type 欄位：顯示 MySQL 使用的查詢類型，包括 const、eq_ref、ref、range、index、all 等。一般來說，類型越好，效率越高。
+       - key 欄位：顯示 MySQL 使用的索引，如果顯示為 NULL，則表示 MySQL 沒有使用索引。
+       - rows 欄位：顯示 MySQL 查詢時需要讀取的行數，這個數字越大，效率越低。
+
+    3. 針對弱項進行優化
+       - 如果 type 欄位顯示為 ALL，表示 MySQL 正在對整個表進行全表掃描，可以建立 index 進行優化
+
+- 定期優化表
+  定期優化表可以清理表中不必要的數據，並且重建索引，進一步提高數據庫效能。可以使用 OPTIMIZE TABLE 命令進行表的優化。
+
+```sql
+OPTIMIZE TABLE user_logs;
 ```
