@@ -49,6 +49,7 @@
 | Date       | Category                | Title                                                                                         |
 | ---------- | ----------------------- | --------------------------------------------------------------------------------------------- |
 | 2023-04-15 | [frontend](./frontend/) | [第三方 Cookie 為何要取得使用者資料](./frontend/basic.md#q第三方-cookie-為何要取得使用者資料) |
+| 2023-04-20 | [vue](./frontend/vue/)  | [MVVM(Model-View-ViewModel)](./frontend/vue/core.md#mvvmmodel-view-viewmodel)                 |
 
 ---
 
