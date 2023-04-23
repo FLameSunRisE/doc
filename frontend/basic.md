@@ -4,8 +4,11 @@
   - [常見專有名詞](#常見專有名詞)
     - [同源政策 (Same-Origin Policy)](#同源政策-same-origin-policy)
     - [跨來源資源共用（CORS）](#跨來源資源共用cors)
-  - [網頁類](#網頁類)
-    - [Q.第三方 Cookie 為何要取得使用者資料](#q第三方-cookie-為何要取得使用者資料)
+      - [為什麼需要跨來源資源共用（CORS）](#為什麼需要跨來源資源共用cors)
+      - [CORS 原理](#cors-原理)
+      - [CORS 中的概念](#cors-中的概念)
+    - [如何實現 CORS](#如何實現-cors)
+      - [Spring boot 實作 CORS](#spring-boot-實作-cors)
 
 ---
 
@@ -34,6 +37,127 @@
 ---
 
 ### 跨來源資源共用（CORS）
+
+#### 為什麼需要跨來源資源共用（CORS）
+
+是因為網路應用程式通常會使用不同的網域（domain）或埠（port）之間進行資源共用。瀏覽器基於安全考慮，將同源政策限制在網路應用程式的安全範圍內，預設情況下，瀏覽器不允許跨域請求，也就是不允許從不同的網域或埠請求資源。
+
+CORS 機制通過添加額外的 HTTP 首部欄位，讓服務端能夠告訴瀏覽器是否允許這個請求跨域進行資源共用。通過 CORS 機制，網路應用程式可以在安全範圍內與不同網域或埠之間進行資源共用。
+
+#### CORS 原理
+
+CORS 的原理是通過在服務器端發送響應頭來告知瀏覽器允許哪些域名訪問該資源。當瀏覽器發現請求的資源不在當前網頁的域名、端口、協議範圍內時，**會先發送一個預檢請求（Preflight Request），詢問服務器是否允許該跨域請求**。如果服務器允許，瀏覽器才會發送正式的請求，否則就會拒絕。
+
+#### CORS 中的概念
+
+- 預檢請求（Preflighted request）
+
+  - 定義
+  - 說明
+    - 當使用 AJAX 等方式進行跨域請求時，會觸發瀏覽器的預檢機制，即**先發送一個 HTTP 方法為 OPTIONS 的請求**，詢問該跨域請求是否安全，是否允許該請求進行。只有在服務端回應了確認訊息（HTTP Status 200），瀏覽器才會發送真正的跨域請求。
+  - 目的
+    - 為了保障跨來源資源共用的安全性，避免未授權的請求對服務端造成攻擊，同時也保障了瀏覽器的安全。
+  - 設置方法
+
+    - 在設置 CORS 時，可以使用網站的後端程式來控制跨來源資源共用的權限，設置方法主要包括：
+
+      1. 在後端程式中返回 Access-Control-Allow-Origin 標頭，用於指定哪些網站可以訪問該資源。
+      2. 可以使用 Access-Control-Allow-Methods 標頭來指定允許的 HTTP 方法。
+      3. 可以使用 Access-Control-Allow-Headers 標頭來指定允許的自定義請求標頭。
+      4. 可以使用 Access-Control-Max-Age 標頭來指定預檢請求的有效時間。
+      5. 可以使用 Access-Control-Allow-Credentials 標頭來指定是否允許發送 Cookie。
+      6. 可以使用 Access-Control-Expose-Headers 標頭來指定哪些標頭可以被瀏覽器讀取。
+         以上這些設置都是為了保障跨來源資源共用的安全性和可控性。
+
+    - 圖示
+      > 圖片出處:[developer.mozilla.org](https://developer.mozilla.org/)
+      > ![cors_option](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/preflight_correct.png)
+
+- 簡單請求（Simple request）。
+
+  1. 請求方法只能是以下方法之一：GET、HEAD、POST。
+  2. HTTP 頭信息只能是以下幾種：
+     - Accept
+     - Accept-Language
+     - Content-Language
+     - Content-Type（只限以下三種值：application/x-www-form-urlencoded、multipart/form-data、text/plain）
+  3. Content-Type 的值必須為以下之一：
+     - text/plain
+     - multipart/form-data
+     - application/x-www-form-urlencoded
+
+  如果以上條件都符合，瀏覽器就會發送簡單請求，並且不需要進行預檢請求，CORS 機制會自動允許請求。
+
+  簡單請求的好處是瀏覽器可以直接進行請求，省去了預檢請求的時間，減少了請求的延遲。
+
+### 如何實現 CORS
+
+#### Spring boot 實作 CORS
+
+在 Spring Boot 中，可以通過添加 CORS Filter 來設置 CORS，步驟如下：
+
+1. 添加依賴，在 pom.xml 中添加以下依賴：
+
+```java
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+
+2. 創建一個 CORS 過濾器，如下所示：
+
+```java
+@Component
+public class CorsFilter implements Filter {
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
+            throws IOException, ServletException {
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        HttpServletRequest request= (HttpServletRequest) servletRequest;
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With");
+        chain.doFilter(servletRequest, servletResponse);
+    }
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {}
+
+    @Override
+    public void destroy() {}
+}
+```
+
+3. 將過濾器添加到 Spring Boot 配置文件中，如下所示：
+
+```java
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private CorsFilter corsFilter;
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+            .allowedOrigins("*")
+            .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD")
+            .allowCredentials(false).maxAge(3600);
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(corsFilter);
+    }
+}
+
+
+#### VUE
+
+### 最佳實踐，例如只允許特定的來源訪問 API，以及限制跨來源訪問時可以傳遞的 HTTP 方法和標頭等。
 
 ---
 
@@ -64,3 +188,4 @@
         - 身份驗證和授權：在 Stack Overflow 上註冊並登錄後，用戶的身份信息將被存儲在 cookie 中。每次用戶在 Stack Overflow 上進行操作時，都需要驗證其身份和授權，以確保用戶具有足夠的權限執行該操作。
         - 個性化體驗：Stack Overflow 可以使用 cookie 存儲用戶的首選項、歷史記錄和其他信息，以提供更個性化的體驗。例如，Stack Overflow 可以使用 cookie 記錄用戶的瀏覽歷史和搜索歷史，以提供更相關的問題和答案。
         - 分析和優化：Stack Overflow 使用 cookie 來收集匿名的統計信息，以了解用戶如何使用網站並優化其功能。例如，Stack Overflow 可以使用 cookie 收集用戶的瀏覽器類型和操作系統信息，以確定應該優化哪些功能和頁面。
+```
