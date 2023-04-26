@@ -37,7 +37,7 @@
     - [Q.OAuth2 授權碼授權類型是什麼?Spring boot security 如何實現?](#qoauth2-授權碼授權類型是什麼spring-boot-security-如何實現)
     - [Q.什麼是 JWT ?Spring boot security 如何實現?](#q什麼是-jwt-spring-boot-security-如何實現)
     - [Q. 什麼是 OAuth2 客戶端憑據授權?Spring boot security 如何實現?](#q-什麼是-oauth2-客戶端憑據授權spring-boot-security-如何實現)
-    - [Q.](#q)
+    - [Q.@EnableWebSecurity](#qenablewebsecurity)
   - [TODO](#todo)
   - [Ref](#ref)
 
@@ -720,7 +720,31 @@ public class OAuth2ClientConfig {
 
 ---
 
-### Q.
+### Q.@EnableWebSecurity
+
+- 用於開啟 Web 安全性功能
+- 自動注入
+  - WebSecurityConfiguration
+    - 創建了 FilterChainProxy，處理安全相關的過濾器鏈
+  - SpringWebMvcImportSelector
+    - 註冊 Spring MVC 相關的安全配置，例如 loginPage、accessDeniedPage 等
+  - OAuth2ImportSelector
+    - 支持 OAuth2 的安全配置
+  - HttpSecurityConfiguration -提供了 http DSL 配置方式，用於配置請求授權、表單登錄、基於 token 的認證等
+  - @EnableGlobalAuthentication
+    - 用於配置全局身份驗證相關的配置
+
+```java
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE})
+@Documented
+@Import({WebSecurityConfiguration.class, SpringWebMvcImportSelector.class, OAuth2ImportSelector.class, HttpSecurityConfiguration.class})
+@EnableGlobalAuthentication
+@Configuration
+public @interface EnableWebSecurity {
+  boolean debug() default false;
+}
+```
 
 ---
 
