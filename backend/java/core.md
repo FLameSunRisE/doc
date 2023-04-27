@@ -12,9 +12,13 @@
 #### **<a id="backend_java_core_string_intro">String Intro</a>**
 
 - 特性:
-  - 不可變 : 因使用```final```
-    - 可以緩存```hash```值 : 不可變的特性使hash的key值也不可變,只需進行一次計算
+
+  - 不可變 : 因使用`final`
+
+    - 可以緩存`hash`值 : 不可變的特性使 hash 的 key 值也不可變,只需進行一次計算
+
       - Example:
+
         - Code:
 
                 ```java
@@ -24,25 +28,25 @@
 
                 ![heap pic](https://www.programcreek.com/wp-content/uploads/2013/07/java-string-pool.jpeg?ezimgfmt=rs:400x260/rscb13/ng:webp/ngcb13)
 
-    - String Pool的需要: 如果一個String被建立後,便會透過String pool中取得引用。
+    - String Pool 的需要: 如果一個 String 被建立後,便會透過 String pool 中取得引用。
     - Security : 確保參數不可變可避免當網路連線、打開文件等等若參數被改變,會導致安全威脅
     - Immutable objects are naturally thread-safe:
-      - 因為```Immutable```不可變所以可已在多個執行緒中自由的共享,因此避免了同步的需求。
+      - 因為`Immutable`不可變所以可已在多個執行緒中自由的共享,因此避免了同步的需求。
 
 - String, StringBuffer and StringBuilder
 
-| String比較    | 可變性(Mutability) | 執行緒安全(Thread-Safety)                  |
-| ------------- | ------------------ | ------------------------------------------ |
-| String        | 不可變             | 不可變,因此為安全的                        |
-| StringBuilder | 可變               | 不安全                                     |
-| StringBuffer  | 可變               | 內部使用synchronized 進行同步,因此為安全的 |
+| String 比較   | 可變性(Mutability) | 執行緒安全(Thread-Safety)                   |
+| ------------- | ------------------ | ------------------------------------------- |
+| String        | 不可變             | 不可變,因此為安全的                         |
+| StringBuilder | 可變               | 不安全                                      |
+| StringBuffer  | 可變               | 內部使用 synchronized 進行同步,因此為安全的 |
 
 - 版本差異:
-  - Java 8: 內部儲存方式為```char```,並使用```final```不可被继承
-  - Java 9: 內部儲存方式為```byte```且透過```coder```來辨識其編碼,並使用```final```不可被继承
+  - Java 8: 內部儲存方式為`char`,並使用`final`不可被继承
+  - Java 9: 內部儲存方式為`byte`且透過`coder`來辨識其編碼,並使用`final`不可被继承
 - Reference
   - [Why String is immutable in Java?](https://www.programcreek.com/2013/04/why-string-is-immutable-in-java/)
-  - [Java基礎-String](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%9F%BA%E7%A1%80.md#%E4%BA%8Cstring)
+  - [Java 基礎-String](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%9F%BA%E7%A1%80.md#%E4%BA%8Cstring)
   - [String, StringBuffer, and StringBuilder](https://stackoverflow.com/questions/2971315/string-stringbuffer-and-stringbuilder)
 
 ---
@@ -50,6 +54,7 @@
 #### **<a id="backend_java_core_buffer_pool">buffer pool 緩衝池</a>**
 
 - new Integer(XXX) VS Integer.valueOf(XXX)
+
   - 比較
     - new Integer(123) :每次都會新建一個對象
     - Integer.valueOf(123) :會使用緩存池中的對象，多次調用會取得同一個對象的引用。
@@ -71,7 +76,9 @@
 > 字串池機制存在的目的就是為了降低「當字串重覆使用」時所消耗的資源成本。
 
 - 機制:
+
   - 只有以「Literal」形式，也就是藉由「雙引號」所產生的字串會被放在「字串池」中
+
     - Eample1:
 
             ```java
@@ -80,6 +87,7 @@
             String s3 = new String("ABC"); // Heap
             System.out.println(s1 == s3); // false
             ```
+
     - Eample2:
 
             ```java
@@ -119,7 +127,7 @@
 ## Reference
 
 - [Why String is immutable in Java?](https://www.programcreek.com/2013/04/why-string-is-immutable-in-java/)
-[跳轉指定位置](#divtop)
+  [跳轉指定位置](#divtop)
 - [淺談「String Pool」
-](https://medium.com/rick-x-coding/%E6%B7%BA%E8%AB%87-string-pool-42c37db41322)
-- [Java基礎-String Pool](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%9F%BA%E7%A1%80.md#string-pool)
+  ](https://medium.com/rick-x-coding/%E6%B7%BA%E8%AB%87-string-pool-42c37db41322)
+- [Java 基礎-String Pool](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%9F%BA%E7%A1%80.md#string-pool)
