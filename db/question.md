@@ -6,6 +6,7 @@
   - [Q.悲觀鎖是否會發生 dirty read](#q悲觀鎖是否會發生-dirty-read)
   - [Q.SQL 如何優化](#qsql-如何優化)
   - [Q.sql index 的種類(Cluster index / non-cluster index)](#qsql-index-的種類cluster-index--non-cluster-index)
+  - [Q.SQL、NOSQL、Redis 應用場景](#qsqlnosqlredis-應用場景)
 
 ## Q.樂觀鎖和悲觀鎖是什麼
 
@@ -176,3 +177,16 @@ OPTIMIZE TABLE user_logs;
 
 - Ref
   - [[食譜好菜] Clustered Index 與 Non-Clustered Index 不同之處](https://dotblogs.com.tw/supershowwei/2016/01/25/155054)
+
+---
+
+## Q.SQL、NOSQL、Redis 應用場景
+
+- SQL 是關聯式資料庫管理系統
+  它的主要優點是可以**處理大量結構化數據**，支持 ACID 事務，可以進行複雜的查詢和分析。SQL 適合處理大型企業級應用和需要保證數據完整性的應用，例如金融、醫療和物流等領域。
+
+- NoSQL 是非關聯式資料庫管理系統
+  它的主要優點是可以**處理大量非結構化數據**，**支持橫向擴展和高可用性**，可以快速存取和查詢數據。NoSQL 適合處理大型網站、社交媒體和物聯網等應用，因為這些應用需要處理海量數據，並具有高度的讀寫性能和可擴展性。 - Example - 社交網絡和電子商務網站通常需要處理大量的非結構化數據，例如**用戶註冊信息**、**產品評論**等，使用 NoSQL 數據庫可以更高效地處理這些數據。
+
+- Redis 是一種基於內存的高速鍵值對資料庫
+  主要優點是能夠快速存取和緩存數據，支持高速查詢和計算，並且可以擴展到多個節點。Redis 適合處理高速緩存、會話管理、消息隊列和排行榜等應用，因為這些應用需要快速的數據讀取和寫入，並且具有高度的性能和可靠性要求。
