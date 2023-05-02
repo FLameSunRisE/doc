@@ -51,6 +51,10 @@
 
 ### 後端知識
 
+| Date       | Category                                    | Title                                                       |
+| ---------- | ------------------------------------------- | ----------------------------------------------------------- |
+| 2023-04-28 | [Design Pattern](./system/DesignPattern.md) | [設計模式(SOLID)](./system/DesignPattern.md#design-pattern) |
+
 ### 後端面試題
 
 | Date       | Category              | Title                                                                          |
