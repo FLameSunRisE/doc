@@ -54,7 +54,8 @@
 | Date       | Category                                    | Title                                                       |
 | ---------- | ------------------------------------------- | ----------------------------------------------------------- |
 | 2023-04-28 | [Design Pattern](./system/DesignPattern.md) | [設計模式(SOLID)](./system/DesignPattern.md#design-pattern) |
-| 2023-04-28 | [Design Pattern](./system/DesignPattern.md) | [Factor Pattern(工廠模式)](./system/DesignPattern.md#factor-pattern工廠模式) |
+| 2023-05-03 | [Design Pattern](./system/DesignPattern.md) | [Factor Pattern(工廠模式)](./system/DesignPattern.md#factor-pattern工廠模式) |
+| 2023-05-04 | [Design Pattern](./system/DesignPattern.md) | [Singleton Pattern (單例模式)](./system/DesignPattern.md#singleton-pattern-單例模式) |
 
 ### 後端面試題
 
