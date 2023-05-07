@@ -57,6 +57,7 @@
 | 2023-05-03 | [Design Pattern](./system/designPattern/read.md) | [Factor Pattern(工廠模式)](./system/designPattern/creationalPattern/factory.md#factor-pattern工廠模式) |
 | 2023-05-04 | [Design Pattern](./system/designPattern/read.md) | [Singleton Pattern (單例模式)](./system/designPattern/creationalPattern/singleton.md)                  |
 | 2023-05-06 | [Design Pattern](./system/designPattern/read.md) | [建造者模式（Builder）](./system/designPattern/builderPattern.md)                                      |
+| 2023-05-07 | [Design Pattern](./system/designPattern/read.md) | [代理模式（Proxy Pattern）](./system/designPattern/proxyPattern.md)                                    |
 
 ### 後端面試題
 
