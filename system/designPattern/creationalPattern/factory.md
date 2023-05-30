@@ -93,7 +93,7 @@ ConcreteFactoryB -> ConcreteProductB
 
 ## 三種工廠模式
 
-- ![ Factory Pattern圖解](https://skyyen999.gitbooks.io/-study-design-pattern-in-java/content/image/factory.gif)
+![ Factory Pattern圖解](https://skyyen999.gitbooks.io/-study-design-pattern-in-java/content/image/factory.gif)
 
 | 工廠模式 | 簡單工廠模式                               | 工廠方法模式                                                             | 抽象工廠模式                                             |
 | -------- | ------------------------------------------ | ------------------------------------------------------------------------ | -------------------------------------------------------- |
@@ -109,6 +109,8 @@ ConcreteFactoryB -> ConcreteProductB
 - 統一在工廠（Factory）生產。
 - Client 只能透過工廠製作出想要的 object。
 - UML
+
+  ![factory-1](../../../out/system/designPattern/creationalPattern/factory/factory-1.svg)
 
   ```plantuml
   @startuml
@@ -140,6 +142,8 @@ ConcreteFactoryB -> ConcreteProductB
   - 屬於創建型模式，
   - 提供一個創建一系列相關或相互依賴的對象接口，無須指定他們具體類
 - UML:
+
+  ![factory-2](../../../out/system/designPattern/creationalPattern/factory/factory-2.svg)
 
   ```plantuml
   @startuml
@@ -192,7 +196,10 @@ ConcreteFactoryB -> ConcreteProductB
 
 ### Abstract Factory Pattern
 
+
 - UML
+
+  ![factory-3](../../../out/system/designPattern/creationalPattern/factory/factory-3.svg)
 
   ```plantuml
   @startuml

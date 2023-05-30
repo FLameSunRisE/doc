@@ -13,26 +13,25 @@
 
 ## Schedule
 
-| Date        | Type       | Tech Category                                 | Title                                                                                            |
-| ----------- | ---------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------ |
-| 2022-07-25  | 理論       | [Backend](#Backend)                           | [Session、Cookie、Token](./backend/core/core.md#Session-Cookie-Token)                            |
-| 2022-07-25  | 理論       | [Frontend Question](#Frontend)                | [写 React / Vue 项目时为什么要在列表组件中写 key，其作用是什么？](#backend_q_1)                  |
-| 2022-07-26  | 理論       | [Backend Learn](#Backend-Learn)               | [buffer pool 緩衝池](./backend/java/core.md#backend_java_core_buffer_pool)                       |
-| 2022-07-27  | 理論       | [Java core](./backend/java/core.md)           | [Java String 介紹](./backend/java/core.md#backend_java_core_string_intro)                        |
-| 2022-07-27  | 理論       | [Java core](./backend/java/core.md)           | [String Pool](./backend/java/core.md#backend_java_core_string_pool)                              |
-| 2022-07-28  | 理論       | [Java core](./backend/java/core.md)           | [OAuth](#OAuth)                                                                                  |
-| 2023-01-19  | 理論       | [Backend](#Backend),[Spring](#Spring)         | [Spring Security](#Spring_Security)                                                              |
-| 2023-01-TBD | Devops     | [CICD](#CICD)                                 | [Gitlab-runner](#)                                                                               |
-| 2023-01-21  | 實作       | [Backend Spring](./backend/java/spring/)      | [Spring boot + thymeleaf](./backend/java/spring/devlog.md#spring-boot-thymeleaf實作)             |
-| 2023-03-21  | 理論       | [Backend Spring](./backend/java/spring/)      | [Cucumber 介紹](./backend/java/spring/test/cucumber.md)                                          |
-| 2023-03-22  | 演算法     | [Algo](./algo/)                               | [Moore voting algorithm](./algo//algo.md)                                                        |
-| 2023-03-23  | 網站內容   | [Refactor](./refactiror/)                     | [翻譯 refactor.guru 網站內容](./book/refactor.md)                                                |
-| 2023-03-24  | 理論       | [Backend Spring](./backend/java/spring/)      | [常見的依賴注入 (DI) 的方式](./backend/interview/SpringQuestion.md#q常見的依賴注入-di-的方式)    |
-| 2023-03-25  | 網路       | [API](./backend/api/api.md)                   | [RESTful API](./backend/api/api.md#restful-api---representational-state-transfer-表現層狀態轉移) |
-| 2023-03-26  | 理論       | [MessageQueue](./backend/mq/message-queue.md) | [MessageQueue 介紹](./backend/mq/message-queue.md)                                               |
-| 2023-04-01  | 演算法     | [Algo](./algo/)                               | [Euclidean algorithm](./algo/algo.md#輾轉相除法歐幾里得算法)                                     |
-| <!--        | 2023-04-11 | 理論                                          | [Backend Spring](./backend/java/spring/)                                                         | [XXXX](./backend/java/spring/) |
-| 2023-03-XX  | 理論       | [Backend Spring](./backend/java/spring/)      | [XXXX](./backend/java/spring/)                                                                   | -->                            |
+| Date        | Type     | Tech Category                                 | Title                                                                                            |
+| ----------- | -------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------ | --- |
+| 2022-07-25  | 理論     | [Backend](#Backend)                           | [Session、Cookie、Token](./backend/core/core.md#Session-Cookie-Token)                            |
+| 2022-07-25  | 理論     | [Frontend Question](#Frontend)                | [写 React / Vue 项目时为什么要在列表组件中写 key，其作用是什么？](#backend_q_1)                  |
+| 2022-07-26  | 理論     | [Backend Learn](#Backend-Learn)               | [buffer pool 緩衝池](./backend/java/core.md#backend_java_core_buffer_pool)                       |
+| 2022-07-27  | 理論     | [Java core](./backend/java/core.md)           | [Java String 介紹](./backend/java/core.md#backend_java_core_string_intro)                        |
+| 2022-07-27  | 理論     | [Java core](./backend/java/core.md)           | [String Pool](./backend/java/core.md#backend_java_core_string_pool)                              |
+| 2022-07-28  | 理論     | [Java core](./backend/java/core.md)           | [OAuth](#OAuth)                                                                                  |
+| 2023-01-19  | 理論     | [Backend](#Backend),[Spring](#Spring)         | [Spring Security](#Spring_Security)                                                              |
+| 2023-01-TBD | Devops   | [CICD](#CICD)                                 | [Gitlab-runner](#)                                                                               |
+| 2023-01-21  | 實作     | [Backend Spring](./backend/java/spring/)      | [Spring boot + thymeleaf](./backend/java/spring/devlog.md#spring-boot-thymeleaf實作)             |
+| 2023-03-21  | 理論     | [Backend Spring](./backend/java/spring/)      | [Cucumber 介紹](./backend/java/spring/test/cucumber.md)                                          |
+| 2023-03-22  | 演算法   | [Algo](./algo/)                               | [Moore voting algorithm](./algo//algo.md)                                                        |
+| 2023-03-23  | 網站內容 | [Refactor](./refactiror/)                     | [翻譯 refactor.guru 網站內容](./book/refactor.md)                                                |
+| 2023-03-24  | 理論     | [Backend Spring](./backend/java/spring/)      | [常見的依賴注入 (DI) 的方式](./backend/interview/SpringQuestion.md#q常見的依賴注入-di-的方式)    |
+| 2023-03-25  | 網路     | [API](./backend/api/api.md)                   | [RESTful API](./backend/api/api.md#restful-api---representational-state-transfer-表現層狀態轉移) |
+| 2023-03-26  | 理論     | [MessageQueue](./backend/mq/message-queue.md) | [MessageQueue 介紹](./backend/mq/message-queue.md)                                               |
+| 2023-04-01  | 演算法   | [Algo](./algo/)                               | [Euclidean algorithm](./algo/algo.md#輾轉相除法歐幾里得算法)                                     |
+| 2023-03-XX  | 理論     | [Backend Spring](./backend/java/spring/)      | [XXXX](./backend/java/spring/)                                                                   | --> |
 
 ---
 
@@ -53,11 +52,11 @@
 
 | Date       | Category                                         | Title                                                                                                  |
 | ---------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| 2023-04-28 | [Design Pattern](./system/designPattern/read.md) | [設計模式(SOLID)](./system/designPattern/read.md#design-pattern)                                       |
+| 2023-04-28 | [Design Pattern](./system/designPattern/read.md) | [SOLID(設計模式)](./system/designPattern/read.md#design-pattern)                                       |
 | 2023-05-03 | [Design Pattern](./system/designPattern/read.md) | [Factor Pattern(工廠模式)](./system/designPattern/creationalPattern/factory.md#factor-pattern工廠模式) |
 | 2023-05-04 | [Design Pattern](./system/designPattern/read.md) | [Singleton Pattern (單例模式)](./system/designPattern/creationalPattern/singleton.md)                  |
-| 2023-05-06 | [Design Pattern](./system/designPattern/read.md) | [建造者模式（Builder）](./system/designPattern/builderPattern.md)                                      |
-| 2023-05-07 | [Design Pattern](./system/designPattern/read.md) | [代理模式（Proxy Pattern）](./system/designPattern/proxyPattern.md)                                    |
+| 2023-05-06 | [Design Pattern](./system/designPattern/read.md) | [Builder（建造者模式）](./system/designPattern/builderPattern.md)                                      |
+| 2023-05-07 | [Design Pattern](./system/designPattern/read.md) | [Proxy Pattern（代理模式）](./system/designPattern/proxyPattern.md)                                    |
 
 ### 後端面試題
 
