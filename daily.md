@@ -14,7 +14,7 @@
 ## Schedule
 
 | Date        | Type     | Tech Category                                 | Title                                                                                            |
-| ----------- | -------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------ | --- |
+| ----------- | -------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | 2022-07-25  | 理論     | [Backend](#Backend)                           | [Session、Cookie、Token](./backend/core/core.md#Session-Cookie-Token)                            |
 | 2022-07-25  | 理論     | [Frontend Question](#Frontend)                | [写 React / Vue 项目时为什么要在列表组件中写 key，其作用是什么？](#backend_q_1)                  |
 | 2022-07-26  | 理論     | [Backend Learn](#Backend-Learn)               | [buffer pool 緩衝池](./backend/java/core.md#backend_java_core_buffer_pool)                       |
@@ -31,7 +31,6 @@
 | 2023-03-25  | 網路     | [API](./backend/api/api.md)                   | [RESTful API](./backend/api/api.md#restful-api---representational-state-transfer-表現層狀態轉移) |
 | 2023-03-26  | 理論     | [MessageQueue](./backend/mq/message-queue.md) | [MessageQueue 介紹](./backend/mq/message-queue.md)                                               |
 | 2023-04-01  | 演算法   | [Algo](./algo/)                               | [Euclidean algorithm](./algo/algo.md#輾轉相除法歐幾里得算法)                                     |
-| 2023-03-XX  | 理論     | [Backend Spring](./backend/java/spring/)      | [XXXX](./backend/java/spring/)                                                                   | --> |
 
 ---
 
