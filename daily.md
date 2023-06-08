@@ -6,6 +6,7 @@
   - [開發遇到的問題](#開發遇到的問題)
   - [後端](#後端)
     - [後端知識](#後端知識)
+    - [後端實作](#後端實作)
     - [後端面試題](#後端面試題)
   - [前端](#前端)
   - [實作過程](#實作過程)
@@ -65,6 +66,12 @@
 | 2023-05-04 | [Design Pattern](./system/designPattern/read.md) | [Singleton Pattern (單例模式)](./system/designPattern/creationalPattern/singleton.md)                  |
 | 2023-05-06 | [Design Pattern](./system/designPattern/read.md) | [Builder（建造者模式）](./system/designPattern/builderPattern.md)                                      |
 | 2023-05-07 | [Design Pattern](./system/designPattern/read.md) | [Proxy Pattern（代理模式）](./system/designPattern/proxyPattern.md)                                    |
+
+### 後端實作
+
+| Date       | Category                                         | Title                                                                                                            |
+| ---------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| 2023-06-05 | [Design Pattern](./system/designPattern/read.md) | [Design Pattern-lab1-File-writer-lab](https://github.com/FLameSunRisE/design-pattern-learning#1-file-writer-lab) |
 
 ### 後端面試題
 
