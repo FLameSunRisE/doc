@@ -72,6 +72,7 @@
 | Date       | Category                                         | Title                                                                                                            |
 | ---------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
 | 2023-06-05 | [Design Pattern](./system/designPattern/read.md) | [Design Pattern-lab1-File-writer-lab](https://github.com/FLameSunRisE/design-pattern-learning#1-file-writer-lab) |
+| 2023-06-10 | [gRPC](./backend/api/gRPC.md)                    | [gRPC lab1-gRPC Demo 專案](https://github.com/FLameSunRisE/grpc-lab/blob/main/doc/lab1_grpc_demo_simple.md)      |
 
 ### 後端面試題
 
