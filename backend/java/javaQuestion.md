@@ -4,6 +4,8 @@
   - [Core](#core)
     - [Q.深拷贝 vs 浅拷贝](#q深拷贝-vs-浅拷贝)
     - [Q.Interceptor vs filter](#qinterceptor-vs-filter)
+    - [Q. LinkedHashMap、ConcurrentHashMap、HashMap 和 TreeMap 區別](#q-linkedhashmapconcurrenthashmaphashmap-和-treemap-區別)
+    - [Q.](#q)
 
 ---
 
@@ -58,3 +60,30 @@
 | 主要操作對象          | 主要操作 HandlerMethod                                     | 主要操作 ServletRequest 和 ServletResponse            |
 | 優點                  | 更加靈活，可以處理更細粒度的請求攔截                       | 更加通用，可以處理所有的 HTTP 請求和響應              |
 | 缺點                  | 不支持 Servlet API，不能進行 Session 操作等                | 攔截範圍廣泛，可能會產生一些副作用                    |
+
+---
+
+### Q. LinkedHashMap、ConcurrentHashMap、HashMap 和 TreeMap 區別
+
+| 實現類            | 保證順序 | 線程安全 | 允許 null 鍵或值 | 操作效能 |
+| ----------------- | -------- | -------- | ---------------- | -------- |
+| HashMap           | 否       | 否       | 是               | 快速     |
+| LinkedHashMap     | 是       | 否       | 是               | 快速     |
+| TreeMap           | 是       | 否       | 仅允許 null 值   | 中等     |
+| ConcurrentHashMap | 否       | 是       | 否               | 中等     |
+
+- HashMap：
+  HashMap 是最常用的 Map 實現類之一。它基於哈希表的原理實現，可以提供快速的插入、查找和刪除操作。HashMap 不保證元素的順序，因此在遍歷時，元素的順序是不確定的。HashMap 允許使用 null 作為鍵和值，但在多線程環境下並不是線程安全的。
+
+- LinkedHashMap：
+  LinkedHashMap 繼承自 HashMap，它在 HashMap 的基礎上添加了一個雙向鏈表，用於維護元素的插入順序。因此，遍歷 LinkedHashMap 時，元素的順序是按照插入順序或訪問順序（可以通過構造函數的 accessOrder 參數指定）來確定的。LinkedHashMap 也允許使用 null 作為鍵和值，而且也不是線程安全的。
+
+- TreeMap：
+  TreeMap 是基於紅黑樹（自平衡二叉查找樹）實現的，它可以保證元素的有序性。TreeMap 按照鍵的自然順序或者通過自定義比較器來進行排序。因為涉及到排序，所以 TreeMap 的插入、查找和刪除操作的時間複雜度為 O(logN)。TreeMap 不允許使用 null 作為鍵，但允許使用 null 作為值。
+
+- ConcurrentHashMap：
+  ConcurrentHashMap 是 Java 並發包提供的線程安全的 HashMap 實現。它採用了分段鎖（Segment）的機制，將整個數據分成多個段（默認為 16 段），每個段都相當於一個小的 HashTable，擁有自己的鎖。這樣多線程操作時，只要鎖住對應的段，不同段之間的操作可以並發進行，提高了並發性能。ConcurrentHashMap 的插入、查找和刪除操作是線程安全的，但在迭代過程中修改集合可能會拋出 ConcurrentModificationException 異常。
+
+---
+
+### Q.
