@@ -5,6 +5,10 @@ jay 的全端開發紀錄
 - [doc](#doc)
 - [學習紀錄](#學習紀錄)
   - [後端技術](#後端技術)
+    - [基本知識](#基本知識)
+    - [API](#api)
+      - [API-介紹](#api-介紹)
+      - [API-gRPC 架構](#api-grpc-架構)
     - [Java](#java)
       - [Thread](#thread)
       - [Spring](#spring)
@@ -17,12 +21,12 @@ jay 的全端開發紀錄
     - [React](#react)
   - [Algo](#algo)
     - [基本數學](#基本數學)
-    - [Array相關](#array相關)
+    - [Array 相關](#array-相關)
   - [Devops](#devops)
   - [Test](#test)
     - [UnitTest](#unittest)
   - [Other](#other)
-    - [Latex教學](#latex教學)
+    - [Latex 教學](#latex-教學)
   - [參考文件](#參考文件)
 
 ---
@@ -34,6 +38,24 @@ jay 的全端開發紀錄
 ---
 
 ## 後端技術
+
+### [基本知識](backend/core/core.md)
+
+在這個部分，提供後端技術的基本知識，包括相關概念、原則和常用的工具或框架。
+
+### [API](backend/api/)
+
+這個部分涵蓋了與 API 相關的內容。提供 API 的介紹和相關資源的連結。
+
+#### [API-介紹](backend/api/api.md)
+
+說明 API 的設計原則、使用方法和範例。
+
+#### [API-gRPC 架構](backend/api/gRPC.md)
+
+介紹 gRPC 架構。你可以解釋 gRPC 的概念、工作原理和使用方式。
+
+---
 
 ### [Java](backend/java/README.md)
 
@@ -77,7 +99,7 @@ jay 的全端開發紀錄
 
 ### [基本數學](./algo/algo.md#基本數學)
 
-### [Array相關](./algo/algo.md#array相關)
+### [Array 相關](./algo/algo.md#array相關)
 
 ---
 
@@ -96,7 +118,7 @@ jay 的全端開發紀錄
 
 ## Other
 
-### [Latex教學](./other/LaTeX.md)
+### [Latex 教學](./other/LaTeX.md)
 
 ---
 

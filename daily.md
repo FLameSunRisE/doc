@@ -5,13 +5,13 @@
   - [演算法](#演算法)
   - [開發遇到的問題](#開發遇到的問題)
   - [後端](#後端)
-    - [後端知識](#後端知識)
+    - [後端知識 - 設計模式](#後端知識---設計模式)
     - [後端實作](#後端實作)
     - [後端面試題](#後端面試題)
   - [前端](#前端)
-  - [實作過程](#實作過程)
+  - [前端實作](#前端實作)
   - [問題整理](#問題整理)
-  - [TODO](#todo)
+  - [TODO 待整理學習的問題](#todo-待整理學習的問題)
 
 ## Schedule
 
@@ -57,7 +57,7 @@
 
 ## 後端
 
-### 後端知識
+### 後端知識 - 設計模式
 
 | Date       | Category                                         | Title                                                                                                  |
 | ---------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
@@ -71,6 +71,9 @@
 
 | Date       | Category                                         | Title                                                                                                            |
 | ---------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| 2023-03-28 | [Message Queue](./backend/mq/)                   | [實作 activeMQ](./backend/mq/activeMQ.md)                                                                        |
+| 2023-03-29 | [Spring](./backend/java/spring)                  | [Spring boot 如何使用排程](./backend/java/spring/task.md)                                                        |
+| 2023-04-14 | [Spring](./backend/java/spring)                  | [mongodb + spring boot 實作](./backend/java/spring/impl/mongodb.md#mongodb--spring-實作)                         |
 | 2023-06-05 | [Design Pattern](./system/designPattern/read.md) | [Design Pattern-lab1-File-writer-lab](https://github.com/FLameSunRisE/design-pattern-learning#1-file-writer-lab) |
 | 2023-06-10 | [gRPC](./backend/api/gRPC.md)                    | [gRPC lab1-gRPC Demo 專案](https://github.com/FLameSunRisE/grpc-lab/blob/main/doc/lab1_grpc_demo_simple.md)      |
 
@@ -82,6 +85,10 @@
 | 2023-04-30 | [Backend](./backend/)          | [Interceptor vs filter](./backend/java/javaQuestion.md#qinterceptor-vs-filter)                                                                      |
 | 2023-04-30 | [Backend](./backend/)          | [SQL、NOSQL、Redis 應用場景](./db/question.md#qsqlnosqlredis-應用場景)                                                                              |
 | 2023-06-11 | [Backend-Java](./backend/java) | [LinkedHashMap、ConcurrentHashMap、HashMap 和 TreeMap 區別](./backend/java/javaQuestion.md#q-linkedhashmapconcurrenthashmaphashmap-和-treemap-區別) |
+| 2023-06-12 | [Backend-Java](./backend/java) | [Spring 如何防止 SQL 注入](./backend/java/javaQuestion.md#qspring-如何防止-sql-注入)                                                                |
+| 2023-06-12 | [Backend-Java](./backend/java) | [Spring IoC 的流程](./backend/java/javaQuestion.md)                                                                                                 |
+| 2023-06-12 | [Backend-Java](./backend/java) | [BeanFactory 和 FactoryBean 的區別](./backend/java/javaQuestion.md)                                                                                 |
+| 2023-06-12 | [Backend-Java](./backend/java) | [TreeMap 介紹](./backend/java/javaQuestion.md)                                                                                                      |
 
 ---
 
@@ -95,13 +102,11 @@
 
 ---
 
-## 實作過程
+## 前端實作
 
-| Date        | Category                                            | Title                                                                                    |
-| ----------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| 2023-03-28  | [ActiveMq](./backend/mq/)                           | [實作 activeMQ](./backend/mq/activeMQ.md)                                                |
-| 2023-03-29  | [Spring](./backend/java/spring)                     | [Spring boot 如何使用排程](./backend/java/spring/task.md)                                |
-| 2023-04-014 | [mongodb + spring boot 實作](./backend/java/spring) | [mongodb + spring boot 實作](./backend/java/spring/impl/mongodb.md#mongodb--spring-實作) |
+| Date | Category | Title |
+| ---- | -------- | ----- |
+| ---- | -------- | ----- |
 
 ---
 
@@ -126,9 +131,12 @@
 | 2023-04-21 | [MQ](./backend/mq/)                | [MQ 掛掉時如何避免資料遺失](./backend/mq/MessageQueue.md#mq-掛掉時如何避免資料遺失)                                       |
 | 2023-04-22 | [Database](./db/)                  | [sql index 的種類(Cluster index / non-cluster index)](./db/question.md#qsql-index-的種類cluster-index--non-cluster-index) |
 
-## TODO
+---
+
+## TODO 待整理學習的問題
 
 1. java- PriorityQueue 用法
+
 <!--
 
 #### [GitLab](#gitlab)
