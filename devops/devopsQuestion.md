@@ -5,6 +5,10 @@
     - [Q.gitlab 如何在 merge code 的時候自動觸發 CICD](#qgitlab-如何在-merge-code-的時候自動觸發-cicd)
       - [設定 gitlab 自動觸發步驟](#設定-gitlab-自動觸發步驟)
       - [自動觸發實作範例](#自動觸發實作範例)
+    - [Q.pipline 的 job 代表的涵義](#qpipline-的-job-代表的涵義)
+    - [Q.gitlab-runner 跟 gitlab-pipline 的關係](#qgitlab-runner-跟-gitlab-pipline-的關係)
+      - [GitLab Runner](#gitlab-runner)
+      - [GitLab Pipeline](#gitlab-pipeline)
 
 ---
 
@@ -65,5 +69,43 @@ rules:
       - "**/*.js"
       - "**/*.css"
 ```
+
+---
+
+### Q.pipline 的 job 代表的涵義
+
+> GitLab CI/CD 中的 pipeline 的 job 代表著 CI/CD 流程中的不同任務或步驟。它們是我們在自動化流程中執行的具體操作。每個 job 有一個名稱和一個或多個腳本，腳本定義了該任務的具體操作，例如編譯代碼、運行測試、部署應用程序等。通過 pipeline 的 job，我們可以將整個 CI/CD 流程分解為多個獨立的任務，並按照順序執行它們。
+
+- 獨立性：**每個 job 都是獨立運行的**，相互之間不會影響或干擾。
+- 依賴性：job**可以指定依賴關係**，確保在前置 job 完成後才執行後續 job。
+- 並行執行：不同的 job**可以並行運行**，提高整個 CI/CD 流程的效率。
+- 順序執行：根據依賴關係，job 可以按照指定的順序執行，確保流程的合理性。
+- 成功與失敗：**每個 job 的執行結果會被記錄**，如果有任何一個 job 失敗，整個 pipeline 將被標記為失敗。
+- 環境隔離：每個 job 運行在自己的環境中，確保了不同 job 之間的隔離性。
+- 配置靈活：可以根據需求自定義 job 的配置，包括運行腳本、環境變量、觸發條件等。
+- 可視化和監控：pipeline 的 job 的執行過程和結果可以在 GitLab 的介面中進行查看和監控。
+- 擴展性：可以根據需要定義多個 job，並根據項目的需求擴展 CI/CD 流程。
+
+---
+
+### Q.gitlab-runner 跟 gitlab-pipline 的關係
+
+> GitLab Runner 是 GitLab CI/CD 的執行代理，負責在適當的**運行環境中執行 CI/CD 任務**
+> GitLab Pipeline 則是**定義和管理 CI/CD 流程的結構**。它們共同協作，實現了持續集成和持續部署的自動化流程。
+
+#### GitLab Runner
+
+- GitLab Runner 是一個開源的代理代理程式，運行在項目的運行環境中（例如虛擬機、Docker 容器或實體機），
+- **負責接收 GitLab Server 發送的 CI/CD 任務**，並在本地運行這些任務。
+- GitLab Runner 通過配置文件中的註冊信息將自己連接到 GitLab Server，這樣 GitLab Server 就可以將 CI/CD 任務派發給相應的 GitLab Runner
+- GitLab Runner 還負責報告任務的執行結果給 GitLab Server。
+
+#### GitLab Pipeline
+
+- GitLab Pipeline 則是**定義和管理 CI/CD 流程的結構**。
+- 它是**一組按順序執行的階段（Stages）和任務（Jobs）的集合**，用於自動化地執行開發、測試和部署等操作。
+- Pipeline 可以在 GitLab 的介面中通過 YAML 配置文件定義，也可以與項目代碼存儲庫關聯，作為項目的一部分。
+- 當開發人員提交代碼或者觸發特定事件時，GitLab 會根據 Pipeline 配置自動觸發 CI/CD 流程。
+- GitLab Runner 負責執行 Pipeline 中的各個任務，並將執行結果回報給 GitLab Server。
 
 ---
