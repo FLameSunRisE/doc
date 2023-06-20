@@ -89,6 +89,7 @@
 | 2023-06-12 | [Backend-Java](./backend/java) | [Spring IoC 的流程](./backend/java/javaQuestion.md)                                                                                                 |
 | 2023-06-12 | [Backend-Java](./backend/java) | [BeanFactory 和 FactoryBean 的區別](./backend/java/javaQuestion.md)                                                                                 |
 | 2023-06-12 | [Backend-Java](./backend/java) | [TreeMap 介紹](./backend/java/javaQuestion.md)                                                                                                      |
+| 2023-06-20 | [Devops](./devops/) | [gitlab 如何在 merge code 的時候自動觸發 CICD](./devops/devopsQuestion.md#qgitlab-如何在-merge-code-的時候自動觸發-cicd)                                                                                                      |
 
 ---
 
