@@ -89,6 +89,10 @@
 | 2023-06-12 | [Backend-Java](./backend/java) | [Spring IoC 的流程](./backend/java/javaQuestion.md)                                                                                                 |
 | 2023-06-12 | [Backend-Java](./backend/java) | [BeanFactory 和 FactoryBean 的區別](./backend/java/javaQuestion.md)                                                                                 |
 | 2023-06-12 | [Backend-Java](./backend/java) | [TreeMap 介紹](./backend/java/javaQuestion.md)                                                                                                      |
+| 2023-06-19 | [DB](./db/)                    | [為何不能使用 select \*](./db/question#q-為何不能使用-select)                                                                                       |
+| 2023-06-19 | [DB](./db/)                    | [SQL 的最左匹配原则](./db/core.md#sql-的最左匹配原则)                                                                                               |
+| 2023-06-19 | [DB](./db/)                    | [如何解讀 explain 的資料](./db/core.md#如何解讀-explain-的資料)                                                                                     |
+| 2023-06-19 | [DB](./db/)                    | [聚集索引和非聚集索引(clustered index and secondary index)](./db/core.md#聚集索引和非聚集索引clustered-index-and-secondary-index)                   |
 | 2023-06-20 | [Devops](./devops/)            | [gitlab 如何在 merge code 的時候自動觸發 CICD](./devops/devopsQuestion.md#qgitlab-如何在-merge-code-的時候自動觸發-cicd)                            |
 | 2023-06-20 | [Devops](./devops/)            | [pipline 的 job 代表的涵義](./devops/devopsQuestion.md#qpipline-的-job-代表的涵義)                                                                  |
 | 2023-06-20 | [Devops](./devops/)            | [gitlab-runner 跟 gitlab-pipline 的關係](./devops/devopsQuestion.md#qgitlab-runner-跟-gitlab-pipline-的關係)                                        |
