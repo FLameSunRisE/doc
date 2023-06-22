@@ -114,6 +114,7 @@
 | Date       | Category                                       | Title                                                                                                                                    |
 | ---------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | 2023-06-22 | [Frontend](./frontend/), [Image Recognition]() | [OpenCV 魔術棒邊緣檢測(nextjs-opencv-lab1)](https://github.com/FLameSunRisE/image-recognition-lab/tree/main/frontend/nextjs-opencv-lab1) |
+| 2023-06-22 | [Frontend](./frontend/)、[React]()             | [LAB1- TODO LIST(Nextjs))](https://github.com/FLameSunRisE/cloud-lab/tree/main/lab/lab1)                                                 |
 
 ---
 
