@@ -2,6 +2,7 @@
 
 - [Java 面試題](#java-面試題)
   - [Core](#core)
+    - [Q.Thread 和 Runnable 的區別](#qthread-和-runnable-的區別)
     - [Q.深拷贝 vs 浅拷贝](#q深拷贝-vs-浅拷贝)
     - [Q.Interceptor vs filter](#qinterceptor-vs-filter)
     - [Q. LinkedHashMap、ConcurrentHashMap、HashMap 和 TreeMap 區別](#q-linkedhashmapconcurrenthashmaphashmap-和-treemap-區別)
@@ -13,6 +14,22 @@
 ---
 
 ## Core
+
+### Q.Thread 和 Runnable 的區別
+
+- Thread 是一個類別，Runnable 是一個介面。由於 Java 語言中的繼承特性，介面可以支持多重繼承，而類別只能單一繼承。
+  因此，如果在已存在繼承關係的類別中要實現線程，只能實現 Runnable 介面。
+
+- Runnable 表示一個線程的頂層介面，實際上 Thread 類別是實現了 Runnable 這個介面，因此在使用時我們都需要實現 run 方法。
+
+- 從面向對象的思維來看，Runnable 相當於一個任務，而 Thread 才是真正處理的線程。因此，我們只需要使用 Runnable 來定義具體的任務，然後交給 Thread 去處理，從而實現了鬆耦合的設計目的。
+
+- 介面表示一種規範或標準，而實現類別表示對這個規範或標準的實現。因此從線程的角度來看，Thread 才是真正意義上的線程實現。
+
+- Runnable 表示線程要執行的任務，因此在線程池中，提交一個任務所傳遞的類型是 Runnable。
+
+>資料來源:[
+跟着Mic学架构兒-【Java面试】Java工作0~1年一定要会的面试题，Thread和Runnable的区别](https://zhuanlan.zhihu.com/p/550594912)
 
 ### Q.深拷贝 vs 浅拷贝
 
