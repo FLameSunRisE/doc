@@ -32,6 +32,7 @@
 | 2023-03-25  | 網路     | [API](./backend/api/api.md)                   | [RESTful API](./backend/api/api.md#restful-api---representational-state-transfer-表現層狀態轉移) |
 | 2023-03-26  | 理論     | [MessageQueue](./backend/mq/message-queue.md) | [MessageQueue 介紹](./backend/mq/message-queue.md)                                               |
 | 2023-04-01  | 演算法   | [Algo](./algo/)                               | [Euclidean algorithm](./algo/algo.md#輾轉相除法歐幾里得算法)                                     |
+| 2023-06-29  | API      | [API](./backend/api)                          | [同步呼叫與非同步呼叫](./algo/algo.md#輾轉相除法歐幾里得算法)                                    |
 
 ---
 
