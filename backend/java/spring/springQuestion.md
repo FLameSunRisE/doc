@@ -2,6 +2,9 @@
 
 - [Spring Question](#spring-question)
   - [Core](#core)
+    - [Q.Spring 基本註釋差異](#qspring-基本註釋差異)
+    - [Q.Spring Boot 常用註釋](#qspring-boot-常用註釋)
+    - [Q. Spring Framework 常用的 XML 配置標籤（tags）有哪些](#q-spring-framework-常用的-xml-配置標籤tags有哪些)
     - [Q.如何解決 Spring bean 的循環依賴](#q如何解決-spring-bean-的循環依賴)
       - [解決方案](#解決方案)
       - [範例](#範例)
@@ -42,6 +45,96 @@
   - [Ref](#ref)
 
 ## Core
+
+### Q.Spring 基本註釋差異
+
+- @Autowired、@Resource 和 @Inject 之間的區別是什麼？
+  - @Autowired 是 Spring 提供的註解，用於自動注入依賴。
+  - @Resource 是 JavaEE 提供的註解，也用於自動注入依賴。
+  - @Inject 是 JavaEE 依賴注入規範（JSR-330）提供的註解，與 @Autowired 功能類似。
+- @Component、@Service、@Repository 和 @Controller 之間的區別是什麼？
+  - @Component 是通用的組件註解，可以標記任何類別作為 Spring 組件。
+  - @Service 是用於標記業務邏輯層的組件。
+  - @Repository 是用於標記數據庫訪問層的組件。
+  - @Controller 是用於標記控制器層的組件。
+- @Configuration 和 @Bean 用於什麼目的？
+  - @Configuration 註解標記一個類別為配置類，可在其中定義和設定 Spring bean。
+  - @Bean 註解用於定義一個 bean，標記在方法上，該方法的返回值將作為 bean 的實例。
+- @RequestMapping 註解的作用是什麼？
+  - @RequestMapping 註解用於定義控制器方法的請求映射路徑和其他請求相關的設置。
+- @Transactional 註解的作用是什麼？
+  - @Transactional 註解用於標記事務管理的方法或類別。它指示 Spring 在方法執行期間應該應用事務管理。
+- @Value 和 @PropertySource 用於什麼？
+  - @Value 註解用於注入配置文件中的值或表達式到 bean 的屬性中。
+  - @PropertySource 註解用於指定要加載的配置文件。
+
+### Q.Spring Boot 常用註釋
+
+- @SpringBootApplication：
+  - 用途：標記應用程式的主類，並啟用 Spring Boot 自動配置。
+  - 解釋：@SpringBootApplication 是一個組合註釋，它包含了 @Configuration、@EnableAutoConfiguration 和 @ComponentScan 註釋，可用於簡化設定和啟用自動配置。
+- @RestController：
+  - 用途：標記類別為 RESTful API 控制器。
+  - 解釋：@RestController 註釋用於標記類別為 RESTful API 的控制器。該註釋結合了 @Controller 和 @ResponseBody，使得控制器方法的返回值直接作為 HTTP 響應的內容返回。
+- @RequestMapping：
+  - 用途：定義控制器方法的請求映射路徑。
+  - 解釋：@RequestMapping 註釋用於定義控制器方法處理的請求映射路徑。可以使用該註釋來指定請求的 URL 路徑、HTTP 方法、路由變數等。
+- @Autowired：
+  - 用途：自動注入依賴。
+  - 解釋：@Autowired 註釋用於自動注入依賴。當一個類別需要使用其他類別的實例時，可以使用 @Autowired 來讓 Spring 自動尋找並注入相對應的實例。
+- @Service：
+  - 用途：標記類別為服務層組件。
+  - 解釋：@Service 註釋用於標記類別為服務層組件。通常用於標記業務邏輯的實現類別。
+- @Repository：
+  - 用途：標記類別為數據庫訪問層組件。
+  - 解釋：@Repository 註釋用於標記類別為數據庫訪問層組件。通常用於標記數據庫操作的實現類別。
+- @ConfigurationProperties：
+  - 用途：將配置屬性映射到類別的屬性上。
+  - 解釋：@ConfigurationProperties 註釋用於將配置屬性映射到類別的屬性上。通過指定 prefix，可以將配置文件中的特定屬性映射到類別的對應屬性上。
+
+### Q. Spring Framework 常用的 XML 配置標籤（tags）有哪些
+
+- `<beans>`
+
+用途：定義 Spring IoC 容器的根元素。
+解釋：在 <beans> 標籤內部，你可以定義各種 bean、bean 的相依關係和其他配置。
+
+- `<bean>`
+
+用途：定義一個 bean。
+解釋：<bean> 標籤用於定義和配置 Spring 容器中的 bean。你需要指定 bean 的唯一識別符（id 或 name），以及 bean 的類別或類別名稱。
+
+- `<property>`
+
+用途：設置 bean 的屬性值。
+解釋：<property> 標籤用於為 bean 設置屬性值。你可以使用 name 屬性指定要設置的屬性名稱，並使用 value 屬性指定屬性值。
+
+- `<constructor-arg>`
+
+用途：設置 bean 的建構子參數值。
+解釋：<constructor-arg> 標籤用於為 bean 的建構子參數設定值。你可以使用 value 屬性指定參數值，或使用其他方式（如引用其他 bean）來設定。
+
+- `<import>`
+
+用途：導入其他配置文件。
+解釋：<import> 標籤用於導入其他的 Spring 配置文件，以便在當前配置文件中使用導入的內容。
+
+- `<context:component-scan>`
+
+用途：自動掃描並註冊 bean。
+解釋：<context:component-scan> 標籤用於啟用自動掃描，以尋找帶有特定註解的類別（如 @Component）並註冊為 bean。
+
+- `<mvc:annotation-driven>`
+
+用途：啟用基於註解的 Spring MVC 功能。
+解釋：<mvc:annotation-driven> 標籤用於啟用 Spring MVC 的基於註解的功能，例如處理器映射、參數解析、視圖解析等。
+
+- `<tx:annotation-driven>`
+
+用途：啟用基於註解的事務管理。
+解釋：<tx:annotation-driven> 標籤用於啟用基於註解的事務管理，允許在方法上使用 @Transactional 註解進行事務操作。
+
+---
 
 ### Q.如何解決 Spring bean 的循環依賴
 

@@ -2,11 +2,14 @@
 
 - [Java 面試題](#java-面試題)
   - [Core](#core)
+    - [Q.LocalDateTime 跟 Date 使用時機與比較](#qlocaldatetime-跟-date-使用時機與比較)
     - [Q.Thread 和 Runnable 的區別](#qthread-和-runnable-的區別)
       - [兩者差異](#兩者差異)
       - [兩者實作方式](#兩者實作方式)
     - [Q.深拷贝 vs 浅拷贝](#q深拷贝-vs-浅拷贝)
     - [Q.Interceptor vs filter](#qinterceptor-vs-filter)
+      - [Interceptor（攔截器）](#interceptor攔截器)
+      - [Filter（過濾器）](#filter過濾器)
     - [Q. LinkedHashMap、ConcurrentHashMap、HashMap 和 TreeMap 區別](#q-linkedhashmapconcurrenthashmaphashmap-和-treemap-區別)
     - [Q.Spring 如何防止 SQL 注入](#qspring-如何防止-sql-注入)
     - [Q. Spring IoC 的流程](#q-spring-ioc-的流程)
@@ -16,6 +19,26 @@
 ---
 
 ## Core
+
+### Q.LocalDateTime 跟 Date 使用時機與比較
+
+| 比較           | java.util.Date                   | java.time.LocalDateTime                              |
+| -------------- | -------------------------------- | ---------------------------------------------------- |
+| 資料型態       | 可變的日期時間物件               | 不可變的日期時間物件                                 |
+| 線程安全性     | 不線程安全                       | 線程安全                                             |
+| 功能和操作方法 | 有限的功能和操作方法，較舊的 API | 豐富的功能和操作方法，包括計算日期間隔、日期格式化等 |
+
+- 資料型態：
+
+java.util.Date 是在 Java 1.0 中引入的，它是一個可變的日期時間物件，內部使用 long 型態的時間戳記來表示日期和時間。而 java.time.**LocalDateTime** 是在 Java 8 中引入的，它**是不可變的日期時間物件**，以更清晰和強大的方式表示日期和時間。
+
+- 線程安全性：
+
+**java.util.Date 不是線程安全的**，因為它是可變的物件，當多個線程同時訪問或修改時可能會出現問題。而 **java.time.LocalDateTime 是線程安全的**，因為它是不可變的物件，可以在多個線程間安全使用。
+
+- 功能和操作方法：
+
+java.util.Date 提供了一些基本的日期和時間操作方法，但在處理日期和時間的功能上相對較有限。而 java.time.LocalDateTime 提供了許多更豐富和靈活的功能，例如計算日期間隔、日期格式化、時區轉換等，並且有更直觀的 API 設計。
 
 ### Q.Thread 和 Runnable 的區別
 
@@ -121,6 +144,112 @@ public class Main {
 | 優點                  | 更加靈活，可以處理更細粒度的請求攔截                       | 更加通用，可以處理所有的 HTTP 請求和響應              |
 | 缺點                  | 不支持 Servlet API，不能進行 Session 操作等                | 攔截範圍廣泛，可能會產生一些副作用                    |
 
+#### Interceptor（攔截器）
+
+- 定義
+  - 在 Java 開發中，**Interceptor 是 Spring 框架中的一個組件**，用於攔截並處理請求。
+  - Interceptor 在 **Spring MVC 中工作在 Controller 層之前和之後**，可以對請求進行前置處理和後置處理。
+    Interceptor 提供了更細粒度的攔截和處理能力，可以針對不同的請求進行不同的處理邏輯。
+    Interceptor 可以執行額外的業務邏輯，例如驗證請求、記錄日誌、權限檢查等。
+- 應用場景
+  - 身份驗證和權限控制：Interceptor 可以用於驗證請求的身份和權限，確保只有具有適當權限的用戶可以訪問特定的請求或頁面。
+  - 日誌記錄：Interceptor 可以攔截請求並記錄日誌，用於監視和分析系統的運行情況，例如請求的處理時間、IP 地址等。
+  - 緩存控制：Interceptor 可以用於緩存的管理，例如檢查是否存在緩存、從緩存中讀取數據或將數據存入緩存。
+  - 埋點統計：Interceptor 可以攔截請求，統計用戶的訪問行為和數據，用於分析和改進系統的使用情況。
+- 實作方式
+
+  - 創建一個實現 HandlerInterceptor 接口的攔截器類
+
+    ```java
+    public class CustomInterceptor implements HandlerInterceptor {
+        @Override
+        public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+            // 在處理請求之前執行的邏輯
+            return true; // 返回 true 表示允許請求繼續執行，返回 false 將阻止請求的執行
+        }
+
+        @Override
+        public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+            // 在處理請求之後、在返回響應之前執行的邏輯
+        }
+
+        @Override
+        public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+            // 在返回響應之後執行的邏輯，可用於執行清理工作
+        }
+    }
+    ```
+
+  - 設定攔截器的配置類，將攔截器添加到配置中
+
+    ```java
+    @Configuration
+    public class InterceptorConfig implements WebMvcConfigurer {
+        @Autowired
+        private CustomInterceptor customInterceptor;
+
+        @Override
+        public void addInterceptors(InterceptorRegistry registry) {
+            registry.addInterceptor(customInterceptor)
+                    .addPathPatterns("/**") // 指定攔截的路徑
+                    .excludePathPatterns("/public/**"); // 排除不需要攔截的路徑
+        }
+    }
+    ```
+
+#### Filter（過濾器）
+
+- 定義
+  - 在 Java 開發中，**Filter 是 Java Servlet 標準規範中的一個組件**，用於攔截和修改請求和響應。
+  - Filter 在 Servlet 規範中**工作在 Web 容器級別，可以攔截和處理所有的請求和響應**。
+  - Filter 提供了**對請求和響應進行修改的能力，可以讀取請求內容、修改請求頭、過濾響應等**。
+  - **Filter 比 Interceptor 層級更低**，它無法針對不同的請求進行不同的處理邏輯，而是對所有請求做統一的處理。
+- 應用場景
+  - 請求攔截和篩選：Filter 可以攔截請求，並對請求進行篩選和修改。例如，過濾器可以對請求進行過濾，排除一些非法的或不符合要求的請求。
+  - 編碼和解碼：Filter 可以對請求進行編碼和解碼，例如對請求的參數進行編碼，或對響應的內容進行解碼。
+  - 壓縮和解壓縮：Filter 可以對請求或響應進行壓縮和解壓縮，減少數據的傳輸量，提高性能。
+  - 統一字符集處理：Filter 可以處理請求和響應中的字符集，確保它們的一致性和正確性。
+- 實作方式
+
+  - 創建一個實現 Filter 接口的過濾器類
+
+    ```java
+    public class CustomFilter implements Filter {
+        @Override
+        public void init(FilterConfig filterConfig) throws ServletException {
+            // 初始化操作
+        }
+
+        @Override
+        public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+            // 過濾器處理邏輯
+            chain.doFilter(request, response); // 執行下一個過濾器或目標頁面
+        }
+
+        @Override
+        public void destroy() {
+            // 銷毀操作
+        }
+    }
+    ```
+
+  - 設定過濾器的配置類，將過濾器添加到配置中
+
+    ```java
+    @Configuration
+    public class FilterConfig {
+
+        @Bean
+        public FilterRegistrationBean<CustomFilter> customFilter() {
+            FilterRegistrationBean<CustomFilter> registrationBean = new FilterRegistrationBean<>();
+            registrationBean.setFilter(new CustomFilter());
+            registrationBean.addUrlPatterns("/*"); // 指定過濾的路徑
+            registrationBean.setOrder(1); // 設置過濾器的執行順序
+            return registrationBean;
+        }
+    }
+    ```
+
 ---
 
 ### Q. LinkedHashMap、ConcurrentHashMap、HashMap 和 TreeMap 區別
@@ -168,20 +297,69 @@ public class Main {
 1. 定義 Bean：首先，需要在 Spring 配置文件（如 XML 配置文件）或使用注解的方式中定義要被 IoC 容器管理的 Bean。Bean 可以是各種類型的 Java 對象，並且可以包含相關的屬性和方法。
 
    - XML 配置文件
+
      ```xml
      <bean>
      ```
+
    - 使用註解:使用相應的註解
      - @Component
      - @Service
      - @Repository
 
 2. 創建容器：接下來，需要創建 Spring 的 IoC 容器。Spring 提供了不同種類的容器實現，如 ClassPathXmlApplicationContext、AnnotationConfigApplicationContext 等。
+
+```java
+public class MainApp {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+
+        HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
+        helloWorld.printMessage();
+    }
+}
+```
+
 3. 載入配置：IoC 容器將根據配置文件的定義或基於註解的配置，載入並解析相應的配置信息，例如 Bean 的定義、依賴關係等。
+
    - XML 配置文件
+
      - 將 XML 配置文件載入到 IoC 容器中，例如使用 ClassPathXmlApplicationContext 的 load 或 refresh 方法。
+     - Example:
+
+       - XML 配置文件的示例
+
+       ```xml
+       <beans xmlns="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+             http://www.springframework.org/schema/beans/spring-beans.xsd">
+           <!-- 定義一個名為 "helloWorld" 的 bean -->
+           <bean id="helloWorld" class="com.example.HelloWorld">
+               <property name="message" value="Hello, World!" />
+           </bean>
+       </beans>
+       ```
+
+       - 在你的應用程式的入口點中，使用 ClassPathXmlApplicationContext 載入 XML 配置文件並創建 IoC 容器。
+
+       ```java
+       import org.springframework.context.ApplicationContext;
+       import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+       public class MainApp {
+           public static void main(String[] args) {
+               ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+
+               HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
+               helloWorld.printMessage();
+           }
+       }
+       ```
+
    - 使用註解
      - 通過指定配置類（使用 @Configuration 注解）或掃描特定的包（使用 @ComponentScan 注解）來設定 IoC 容器的配置。
+
 4. 創建 Bean 實例：一旦配置文件被載入，IoC 容器將根據配置信息創建 Bean 的實例。這涉及到實例化 Bean 並解析其相應的依賴關係。
 5. 注入依賴：在創建 Bean 實例的過程中，IoC 容器將自動注入 Bean 所需的相關依賴。這可以通過設置相應的屬性值或使用建構函式注入等方式實現。
    - 屬性注入：
