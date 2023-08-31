@@ -9,8 +9,10 @@
     - [後端實作](#後端實作)
     - [後端面試題](#後端面試題)
   - [前端](#前端)
+  - [| 2023-08-31 | css   | Css float                                          |](#-2023-08-31--css----css-float------------------------------------------)
     - [前端面試題](#前端面試題)
   - [前端實作](#前端實作)
+  - [| 2023-08-31 | Frontend、css         | LAB-金魚腦課程學習                      |](#-2023-08-31--frontendcss----------lab-金魚腦課程學習----------------------)
   - [問題整理](#問題整理)
   - [TODO 待整理學習的問題](#todo-待整理學習的問題)
 
@@ -113,8 +115,8 @@
 | 2023-04-20 | [vue](./frontend/vue/)  | [MVVM(Model-View-ViewModel)](./frontend/vue/core.md#mvvmmodel-view-viewmodel)                 |
 | 2023-04-21 | [vue](./frontend/vue/)  | [生命週期](./frontend/vue/core.md#生命週期)                                                   |
 | 2023-08-30 | [css](./frontend/css)   | [Css specificity](./frontend/css/basic/css_basic_specificity.md)                              |
-| 2023-08-30 | [css](./frontend/css)   | [Box model](./frontend/css/basic/css_basic_boxmodel.md)                                       |
-
+| 2023-08-30 | [css](./frontend/css)   | [Css model](./frontend/css/basic/css_basic_boxmodel.md)                                       |
+| 2023-08-31 | [css](./frontend/css)   | [Css float](./frontend/css/basic/css_basic_float.md)                                          |
 ---
 
 ### 前端面試題
@@ -132,7 +134,7 @@
 | ---------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | 2023-06-22 | [Frontend](./frontend/), [Image Recognition]() | [OpenCV 魔術棒邊緣檢測(nextjs-opencv-lab1)](https://github.com/FLameSunRisE/image-recognition-lab/tree/main/frontend/nextjs-opencv-lab1) |
 | 2023-06-22 | [Frontend](./frontend/)、[React]()             | [LAB1- TODO LIST(Nextjs))](https://github.com/FLameSunRisE/cloud-lab/tree/main/lab/lab1)                                                 |
-
+| 2023-08-31 | [Frontend](./frontend/)、[css](./css/)         | [LAB-金魚腦課程學習](https://github.com/FLameSunRisE/frontend-lab/blob/main/css/css-lab/goldfish-css-lab/readme.md)                      |
 ---
 
 ## 問題整理

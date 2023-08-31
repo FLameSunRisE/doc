@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Float Example</title>
+<style>
+  .container {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow: hidden; /* Clear the float */
+  }
+
+  .left {
+    float: left;
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    margin-right: 10px;
+  }
+
+  .right {
+    float: right;
+    width: 100px;
+    height: 100px;
+    background-color: lightgreen;
+    margin-left: 10px;
+  }
+</style>
+</head>
+<body>
+  <h1>Float Example</h1>
+  <div class="container">
+    <div class="left"></div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus orci vel odio malesuada, at varius odio vehicula.</p>
+    <p>Fusce eleifend lectus at augue scelerisque, ut facilisis odio efficitur. Nulla facilisi.</p>
+  </div>
+  <div class="container">
+    <p>Floating to the right.</p>
+    <div class="right"></div>
+    <p>Donec dignissim neque et leo tristique, ut rhoncus elit laoreet.</p>
+    <p>Integer sit amet arcu auctor, tincidunt leo at, cursus velit.</p>
+  </div>
+</body>
+</html>
