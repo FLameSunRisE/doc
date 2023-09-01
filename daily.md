@@ -107,15 +107,16 @@
 
 ## 前端
 
-| Date       | Category                | Title                                                                                         |
-| ---------- | ----------------------- | --------------------------------------------------------------------------------------------- |
-| 2023-04-15 | [frontend](./frontend/) | [第三方 Cookie 為何要取得使用者資料](./frontend/basic.md#q第三方-cookie-為何要取得使用者資料) |
-| 2023-04-20 | [vue](./frontend/vue/)  | [MVVM(Model-View-ViewModel)](./frontend/vue/core.md#mvvmmodel-view-viewmodel)                 |
-| 2023-04-21 | [vue](./frontend/vue/)  | [生命週期](./frontend/vue/core.md#生命週期)                                                   |
-| 2023-08-30 | [css](./frontend/css)   | [Css specificity](./frontend/css/basic/css_basic_specificity.md)                              |
-| 2023-08-30 | [css](./frontend/css)   | [Css model](./frontend/css/basic/css_basic_boxmodel.md)                                       |
-| 2023-08-31 | [css](./frontend/css)   | [Css float](./frontend/css/basic/css_basic_float.md)                                          |
-| 2023-08-31 | [Javascript](./frontend/javascript/readme.md)   | [Scope](./frontend/javascript/basic.md#scope-作用域)                                          |
+| Date       | Category                                      | Title                                                                                         |
+| ---------- | --------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| 2023-04-15 | [frontend](./frontend/)                       | [第三方 Cookie 為何要取得使用者資料](./frontend/basic.md#q第三方-cookie-為何要取得使用者資料) |
+| 2023-04-20 | [vue](./frontend/vue/)                        | [MVVM(Model-View-ViewModel)](./frontend/vue/core.md#mvvmmodel-view-viewmodel)                 |
+| 2023-04-21 | [vue](./frontend/vue/)                        | [生命週期](./frontend/vue/core.md#生命週期)                                                   |
+| 2023-08-30 | [css](./frontend/css)                         | [Css specificity](./frontend/css/basic/css_basic_specificity.md)                              |
+| 2023-08-30 | [css](./frontend/css)                         | [Css model](./frontend/css/basic/css_basic_boxmodel.md)                                       |
+| 2023-08-31 | [css](./frontend/css)                         | [Css float](./frontend/css/basic/css_basic_float.md)                                          |
+| 2023-08-31 | [Javascript](./frontend/javascript/readme.md) | [Scope](./frontend/javascript/basic.md#scope-作用域)                                          |
+| 2023-09-01 | [css](./frontend/css)                         | [Css pseudo用法](./frontend/css/basic/css_basic_pseudo.md)                                    |
 
 ---
 

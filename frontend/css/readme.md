@@ -5,6 +5,7 @@
     - [Box Model](#box-model)
     - [Specificity](#specificity)
     - [float](#float)
+    - [Css pseudo用法](#css-pseudo用法)
   - [Css 實作練習](#css-實作練習)
     - [1. 金魚腦課程學習](#1-金魚腦課程學習)
       - [專案:goldfish-css-lab project](#專案goldfish-css-lab-project)
@@ -18,6 +19,8 @@
 ### [Specificity](./basic/css_basic_specificity.md)
 
 ### [float](./basic/css_basic_float.md)
+
+### [Css pseudo用法](./basic/css_basic_pseudo.md)
 
 ---
 
